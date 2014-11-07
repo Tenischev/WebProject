@@ -5,6 +5,11 @@
 @ini_set ( 'html_errors', false );
 
 $ANTISPAM = 'superProject';
+session_start();
+if (!isset($_SESSION['logged'])) {
+	$_SESSION['logged'] = false;
+}
+
 include 'templateLoader.php';
 
 if (isset($_POST['login'])){
