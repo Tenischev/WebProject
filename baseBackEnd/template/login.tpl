@@ -14,7 +14,7 @@
       <center>
       {message}
       <form method="post">
-        <input type="hidden" name="login" value="yes">
+        <input type="hidden" name="auth" value="yes">
         Логин: <input type="text" name="nick"><br>
         Пароль: <input type="password" name="pass"><br>
         <input type="submit" style="border: solid 1px #5F5F5F; background: #E5E5E5; padding: 5px; border-radius: 5px" value="Вход">

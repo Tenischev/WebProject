@@ -19,9 +19,11 @@
 		<input type="submit"  style="border: solid 1px #5F5F5F; background: #E5E5E5; padding: 5px; border-radius: 5px" value="Вход">
 	</form>
 	<br>
-	<div style="border: solid 1px #5F5F5F; background: #E5E5E5; padding: 5px; border-radius: 5px">
-	  Регистрация
-	</div>
+	<a href="/register.php" style="text-decoration: none">
+      <div style="border: solid 1px #5F5F5F; background: #E5E5E5; padding: 5px; border-radius: 5px">
+        <span>Регистрация</span>
+      </div>
+	</a>
       </center>
     </span>
   </div>

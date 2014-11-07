@@ -2,7 +2,7 @@
 if ($ANTISPAM != 'superProject'){
 	die('Error');
 }
-if (isset($_POST['login'])){
+if (isset($_POST['auth'])){
 	$login = $_POST['nick'];
 	$password = $_POST['pass'];
 	if(preg_match( "/[\||\'|\<|\>|\[|\]|\"|\!|\?|\$|\@|\/|\\\|\&\~\*\{\+]/", $login ) ) $login = "";
