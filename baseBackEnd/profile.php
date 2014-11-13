@@ -1,12 +1,11 @@
 <?php
-if ($ANTISPAM != 'superProject'){
-	die('Error');
-}
-if ($_SESSION['logged']){
+define('TheListsProject');
+include 'settings.php';
+
+if (!$is_logged)){
     $tpl->load('profile.tpl');
     $tpl->compile();
 } else {
-    $tpl->load('autherror.tpl');
-    $tpl->compile();
+    header('Location: index.php');
 }
 ?>
