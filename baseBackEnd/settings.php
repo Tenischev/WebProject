@@ -9,9 +9,9 @@ if (!defined('TheListsProject')){
 @ini_set ( 'html_errors', false );
 
 $dblocal = "localhost:3306";
-$dbname = "thelists";
-$dbuser = "mainuser";
-$dbpass = 'password';
+$dbname = "the_lists";
+$dbuser = "the_lists";
+$dbpass = 's6Hy21Zkf32dvbmq0';
 
 $speccon = mysql_connect($dblocal, $dbuser, $dbpass) or die(mysql_error());
 mysql_select_db($dbname, $speccon) or die(mysql_error());

@@ -1,5 +1,5 @@
 <?php
-define('TheListsProject');
+define('TheListsProject', true);
 include 'settings.php';
 
 if (!$is_logged){
