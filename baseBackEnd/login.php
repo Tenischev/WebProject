@@ -8,7 +8,7 @@ if (!$is_logged){
 		$password = $_POST['pass'];
 		if(preg_match( "/[\||\'|\<|\>|\[|\]|\"|\!|\?|\$|\@|\/|\\\|\&\~\*\{\+]/", $login ) ) $login = "";
 		if(preg_match( "/[\||\'|\<|\>|\[|\]|\"|\!|\?|\$|\@|\/|\\\|\&\~\*\{\+]/", $password ) ) $password = "";
-		$salt = '$2a$10$'.substr(str_replace('+', '.', base64_encode(pack('N4', mt_rand(), mt_rand(), mt_rand(),mt_rand()))), 0, 22) . '$';
+		$salt = '$1$kris13ha$';
 		$hashed_password = crypt($password, $salt);
 		$query = mysql_query("SELECT * FROM list_users WHERE name = '$login' AND password = '$hashed_password';");
 		if (mysql_num_rows($query) == 1){
@@ -20,11 +20,12 @@ if (!$is_logged){
 		} else {
 			mysql_free_result($query);
 			$tpl->load('login.tpl');
-			$tpl->set('{message}','Ошибка авторизации, неверный логин\пароль');
+			$tpl->set('{message}',"Ошибка авторизации, неверный логин\пароль $login  $hashed_password");
 			$tpl->compile();
 		}
 	} else {
 		$tpl->load('login.tpl');
+		$tpl->set('{message}','');
 		$tpl->compile();
 	}
 } else {
