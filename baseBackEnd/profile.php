@@ -36,7 +36,7 @@ if ($is_logged){
             if (isset($_GET['id'])){
                 if (is_numeric($_GET['id'])){
                     $idList = $_GET['id'];
-                    $query = mysql_query("SELECT * FROM lists WHERE id = '$idList' and public = '1';");
+                    $query = mysql_query("SELECT * FROM lists WHERE id = '$idList' AND user = '$user' AND public = '1';");
                     if (mysql_num_rows($query) == 1){
                         $row = mysql_fetch_array($query);
                         $nameList = $row['name'];
