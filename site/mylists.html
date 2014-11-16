@@ -23,9 +23,13 @@
         <tr style="height: 100%; width: 100%;">
             <td style="height: 100%; width: 25%; padding: 0">
                 <div style="height: 100%; padding: 5px 10px; background: #E5E5E5; border-right: solid 1px black">
-                  <span>
-                    {lists}
-                  </span>
+                    <span style="font-size: 20px;">
+                        {user_name}
+                    </span>
+                    <hr>
+                    <span>
+                        {lists}
+                    </span>
                 </div>
             </td>
             <td style="height: 100%; width: 70%; padding: 5% 20%;  min-height: 400px">
