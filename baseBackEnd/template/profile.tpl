@@ -31,11 +31,11 @@
             <td style="height: 100%; width: 70%; padding: 5% 20%;  min-height: 400px">
                 <div style="height: 100%; padding: 5px 10px; background: #E5E5E5; border: solid 1px black">
                     <span style="font-size: 20px;">
-                        {name_list}
+                        {name}
                     </span>
                     <hr>
                     <span>
-                        {text_list}
+                        {text}
                     </span>
                 </div>
             </td>
