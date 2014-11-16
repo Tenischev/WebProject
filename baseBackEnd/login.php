@@ -20,7 +20,7 @@ if (!$is_logged){
 		} else {
 			mysql_free_result($query);
 			$tpl->load('login.tpl');
-			$tpl->set('{message}',"Ошибка авторизации, неверный логин\пароль $login  $hashed_password");
+			$tpl->set('{message}',"Ошибка авторизации, неверный логин\пароль");
 			$tpl->compile();
 		}
 	} else {

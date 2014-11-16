@@ -77,7 +77,7 @@ if (!$is_logged){
                         $form = "";
                     } else {
                         mysql_query("UPDATE list_users SET secret_key = '' WHERE name = '$login' AND mail = '$mail';");
-                        $message = "Регистрация успешно завершена";
+                        $message = 'Регистрация успешно завершена <meta http-equiv="Refresh" content="5;url=http://192.168.1.37/">';
                         $form = "";
                         $_SESSION['logged'] = true;
                         $_SESSION['id_in_table'] = $row['id'];

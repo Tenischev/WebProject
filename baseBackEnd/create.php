@@ -5,7 +5,7 @@ include 'settings.php';
 if ($is_logged){
     if (isset($_POST['create'])){
         $nameList = htmlspecialchars($_POST['name']);
-        $textList = htmlspecialchars($_POST['text']);
+        $textList = mysql_real_escape_string(htmlspecialchars($_POST['text']));
         $publicList = 0;
         if (isset($_POST['public'])){
             $publicList = 1;
