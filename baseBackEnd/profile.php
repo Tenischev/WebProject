@@ -34,12 +34,14 @@ if ($is_logged){
         if (mysql_num_rows($query) >= 1){
             $i = 0;
             while ($row = mysql_fetch_array($query)){
-                $nameCurList = $row['name'];
-                $i += 1;
-                $lists = $lists.'<a href="?list='.$i.$link.'">'.$nameCurList.'</a><br>';
-                if ($number == $i){
-                    $nameList = $nameCurList;
-                    $textList = $row['text'];
+                if (($row['public'] == 1) or ($user == $user_name)){
+                    $nameCurList = $row['name'];
+                    $i += 1;
+                    $lists = $lists.'<a href="?list='.$i.$link.'">'.$nameCurList.'</a><br>';
+                    if ($number == $i){
+                        $nameList = $nameCurList;
+                        $textList = $row['text'];
+                    }
                 }
             }
         }
