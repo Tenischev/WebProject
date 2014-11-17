@@ -22,6 +22,7 @@ if ($is_logged){
         }
     }
     $tpl->load('search.tpl');
+    $tpl->set('{profile_name}', $user_name);
     $tpl->set('{people}', $users);
     $tpl->set('{lists}', $lists);
     $tpl->compile();

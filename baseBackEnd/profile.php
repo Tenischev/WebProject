@@ -52,11 +52,12 @@ if ($is_logged){
                 while ($row = mysql_fetch_array($query)){
                     if (($row['public'] == 1) or ($user == $user_name)){
                         $nameCurList = $row['name'];
+                        $teg = getTeg($row['type']);
                         $i += 1;
                         $lists = $lists.'<a href="?list='.$i.$link.'">'.$nameCurList.'</a><br>';
                         if ($number == $i){
                             $nameList = $nameCurList;
-                            $textList = nl2br(htmlspecialchars($row['text']));
+                            $textList = "<".$teg."><li>".str_replace("\n", "</li><li>", str_replace("\r\n", "</li><li>", nl2br(htmlspecialchars($row['text']))))."</li></".$teg.">";
                         }
                     }
                 }
@@ -73,5 +74,12 @@ if ($is_logged){
     }
 } else {
     header('Location: index.php');
+}
+
+function getTeg($type){
+    if ($type == 1){
+        return "ol";
+    }
+    return "ul";
 }
 ?>
