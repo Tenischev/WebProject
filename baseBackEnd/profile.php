@@ -2,6 +2,10 @@
 define('TheListsProject', true);
 include 'settings.php';
 
+$delButton = '<form method="post">
+                  <input type="submit" name="delete" value="×" class="del_button">
+              </form>';
+
 if ($is_logged){
     if (isset($_POST['search'])){
         header('Location: search.php?find='.$_POST['search']);
@@ -12,9 +16,11 @@ if ($is_logged){
             $user = $_GET['user'];
             $link = "&user=".$user;
             $lists = "";
+            $button = "";
             if(preg_match( "/[\||\'|\<|\>|\[|\]|\"|\!|\?|\$|\@|\/|\\\|\&\~\*\{\+]/", $user ) ) $user = "";
         } else {
             $link = '';
+            $button = $delButton;
         }
         $query = mysql_query("SELECT * FROM list_users WHERE name = '$user';");
         if (($user == "") or (mysql_num_rows($query) < 1)){
@@ -46,6 +52,20 @@ if ($is_logged){
                     mysql_free_result($query);
                 }
             }
+            if ((isset($_POST['delete'])) and ($user == $user_name)){
+                $query = mysql_query("SELECT * FROM lists WHERE user = '$user_name';");
+                if (mysql_num_rows($query) >= 1){
+                    $i = 0;
+                    while ($row = mysql_fetch_array($query)){
+                        $i += 1;
+                        if ($number == $i){
+                            mysql_query("DELETE FROM lists WHERE id = '".$row['id']."';");
+                            break;
+                        }
+                    }
+                }
+                mysql_free_result($query);
+            }
             $query = mysql_query("SELECT * FROM lists WHERE user = '$user';");
             if (mysql_num_rows($query) >= 1){
                 $i = 0;
@@ -65,10 +85,11 @@ if ($is_logged){
             mysql_free_result($query);
             $tpl->load('profile.tpl');
             $tpl->set('{lists}', $lists);
-            $tpl->set('{name}', $nameList);
-            $tpl->set('{text}', $textList);
+            $tpl->set('{name_list}', $nameList);
+            $tpl->set('{text_list}', $textList);
             $tpl->set('{profile_name}', $user_name);
             $tpl->set('{user_name}', $user);
+            $tpl->set('{buttons}', $button);
             $tpl->compile();
         }
     }
