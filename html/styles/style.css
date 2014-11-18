@@ -23,7 +23,7 @@ body{
     right: 5%;
     padding: 20px 30px;
     width: auto;
-    min-width: 15%;
+    min-width: 12%;
     height: auto;
     background: #7777E7;
     border-radius: 20px;
@@ -47,8 +47,8 @@ body{
 
 .text{
     display: block;    
-    width: 100%;
     text-align: center;
+    width: 100%;    
     color: white;
 }
 

@@ -3,13 +3,13 @@ define('TheListsProject', true);
 include 'settings.php';
 
 if (!$is_logged){
-    $form = '<form method="post">
+    $form = '<form class="box" method="post">
                  <input type="hidden" name="register" value="yes">
-                 Логин: <input type="text" name="nick" maxlength="15"><br>
-                 Почта: <input type="text" name="email" maxlength="30"><br>
-                 Пароль: <input type="password" name="pass" maxlength="15"><br>
-                 Подтверждение: <input type="password" name="pass_confirm" maxlength="15"><br>
-                 <input type="submit" style="border: solid 1px #5F5F5F; background: #E5E5E5; padding: 5px; border-radius: 5px" value="Зарегистрироваться">
+                 <span class="editText">Логин: <input type="text" name="nick" maxlength="15"></span>
+                 <span class="editText">Почта: <input type="text" name="email" maxlength="30"></span>
+                 <span class="editText">Пароль: <input type="password" name="pass" maxlength="15"></span>
+                 <span class="editText">Подтверждение: <input type="password" name="pass_confirm" maxlength="15"></span>
+                 <span class="button"><input type="submit" value="Зарегистрироваться"></span>
                </form>';
     $message = "";
     if (isset($_POST['register'])){
