@@ -41,13 +41,30 @@ body{
     color: #9999F7;
 }
 
-.del_button{
-	color:#BBB;
-	font-family:'Verdana';
-	font-weight:bold;
-	font-size:20px;
-	font-style:italic;
+.list_buttons{
 	padding: 0;
 	border: 0;
 	background-color: transparent;
+}
+
+.pencil{
+	padding: inherit;
+	border: inherit;
+	background-color: inherit;
+	max-width:            24px;
+	max-height:           24px;
+	min-width:            24px;
+	min-height:           24px;
+	background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAAA3NCSVQICAjb4U/gAAAACXBIWXMAAACmAAAApgHdff84AAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAEVQTFRF////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHmGn6QAAABZ0Uk5TAAIEEBQYHjBESFRziYyeoaer1/f4+x6GAkAAAABdSURBVCjP5czbEYAgEEPRsLiKL5BV03+pFkA68H6ezAQYs2uDyjpfuUxBtdjpHuQlfsI9uo1Ohk/SyRPau/3Ekar2XFJVjuNZUxU+33xKGh2N95FHxvK2Gap9kYwPmVQKVdpi2uwAAAAASUVORK5CYII98ee2822c74d76de0ef2ea9acb1adc56');
+}
+
+.del_button {
+	padding: inherit;
+	border: inherit;
+	background-color: inherit;
+	max-width:            24px;
+	max-height:           24px;
+	min-width:            24px;
+	min-height:           24px;
+	background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAAagAAAGoB3Bi5tQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEjSURBVEiJtZbLSsRAEEVPxb2Cg6DBfxTHB7MS8fl3gow6v+DGvSjOddFx6Ek/Q0xBb1Jd53QHqhKTxJTRTEqPCczF3lCQmR2Z2U6QkLRZQAu8AF/AhZ/LLeAK+AFWwPFWztvUAEtA3rqsgF/3al6BJiZogXVvs3I3icAFfAOzQNAV3EUKBJxVwoNbx071kCicV8AXAS9x9dRNTofAk4JOcpsAVcOzgk5yMwZeFBTedxEuafSoKA+yEaevasax8L91PkiQgS+Ax0QuaMZUoyXh3p6UZJ4V4KZiXYemJSdRAXCAG7n1TRSXfAK7MUEDvNXCM5Kn3CtqgWfcyC1+C7y6e9yoXwKHfs66DZswMwP2JX0wIMysBd4lrbee9wX/HZP/VfwCfxke/EEuG5EAAAAASUVORK5CYII266dcbbe9baa3bf447c32ec2348d9ced');
 }

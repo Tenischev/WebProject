@@ -2,8 +2,9 @@
 define('TheListsProject', true);
 include 'settings.php';
 
-$delButton = '<form method="post">
-                  <input type="submit" name="delete" value="×" class="del_button">
+$delButton = '<form method="post" class="list_buttons">
+                  <input type="submit" name="edit" value=" " class="pencil">
+                  <input type="submit" name="delete" value=" " class="del_button">
               </form>';
 
 if ($is_logged){
@@ -66,31 +67,48 @@ if ($is_logged){
                 }
                 mysql_free_result($query);
             }
-            $query = mysql_query("SELECT * FROM lists WHERE user = '$user';");
-            if (mysql_num_rows($query) >= 1){
-                $i = 0;
-                while ($row = mysql_fetch_array($query)){
-                    if (($row['public'] == 1) or ($user == $user_name)){
-                        $nameCurList = $row['name'];
-                        $teg = getTeg($row['type']);
+            $flagEdit = false;
+            if ((isset($_POST['edit'])) and ($user == $user_name)){
+                $query = mysql_query("SELECT * FROM lists WHERE user = '$user_name';");
+                if (mysql_num_rows($query) >= 1){
+                    $i = 0;
+                    while ($row = mysql_fetch_array($query)){
                         $i += 1;
-                        $lists = $lists.'<a href="?list='.$i.$link.'">'.$nameCurList.'</a><br>';
                         if ($number == $i){
-                            $nameList = $nameCurList;
-                            $textList = "<".$teg."><li>".str_replace("\n", "</li><li>", str_replace("\r\n", "</li><li>", nl2br(htmlspecialchars($row['text']))))."</li></".$teg.">";
+                            header('Location: edit.php?id='.$row['id']);
+                            $flagEdit = true;
                         }
                     }
                 }
+                mysql_free_result($query);
             }
-            mysql_free_result($query);
-            $tpl->load('profile.tpl');
-            $tpl->set('{lists}', $lists);
-            $tpl->set('{name_list}', $nameList);
-            $tpl->set('{text_list}', $textList);
-            $tpl->set('{profile_name}', $user_name);
-            $tpl->set('{user_name}', $user);
-            $tpl->set('{buttons}', $button);
-            $tpl->compile();
+            if (!$flagEdit){
+                $query = mysql_query("SELECT * FROM lists WHERE user = '$user';");
+                if (mysql_num_rows($query) >= 1){
+                    $i = 0;
+                    while ($row = mysql_fetch_array($query)){
+                        if (($row['public'] == 1) or ($user == $user_name)){
+                            $nameCurList = $row['name'];
+                            $teg = getTeg($row['type']);
+                            $i += 1;
+                            $lists = $lists.'<a href="?list='.$i.$link.'">'.$nameCurList.'</a><br>';
+                            if ($number == $i){
+                                $nameList = $nameCurList;
+                                $textList = "<".$teg."><li>".str_replace("\n", "</li><li>", str_replace("\r\n", "</li><li>", nl2br(htmlspecialchars($row['text']))))."</li></".$teg.">";
+                            }
+                        }
+                    }
+                }
+                mysql_free_result($query);
+                $tpl->load('profile.tpl');
+                $tpl->set('{lists}', $lists);
+                $tpl->set('{name_list}', $nameList);
+                $tpl->set('{text_list}', $textList);
+                $tpl->set('{profile_name}', $user_name);
+                $tpl->set('{user_name}', $user);
+                $tpl->set('{buttons}', $button);
+                $tpl->compile();
+            }
         }
     }
 } else {
