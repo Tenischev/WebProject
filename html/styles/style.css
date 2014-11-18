@@ -110,3 +110,40 @@ body{
     max-height:           24px;
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAQCAYAAAAMJL+VAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAABigAAAYoBM5cwWAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAD6SURBVDiNxZSxagJBGIS/kbMICL6AiGUC1oKNjeALxC59IE3KkC5vEAjkJcTKUqxsLHwDUyZ1CCFFIIGbFJFzNWfYgxMH/mKnmOGf2V3Z5pCo5JGS2pKqZRhodwNJY2AIPAOnwAC4itRLgQvbbxljOxvgBPgCvJ4+cBucY6YVaiahve1PSY/ANbAE5mvDhwIbvIbEn4gAJNVtv0eK/ou8DjrAJTCzPZJUAxqReqntpy1mp4MEeOE3yxQ4A24o1kEz1My9pmXi4BEdpeR7Nte0B3SB80i9FLiz/ZExx3hoEzZfxQKoAdMCG2xFu6+DNrCy/R0pvBe5BmXiB97kwYZIzDH7AAAAAElFTkSuQmCCd6d27f76ed443ef7056031648cbfceed');
 }
+
+.pop_message {
+    position: absolute;
+    bottom: 5px; /* Положение от нижнего края */
+    right: 5px; /* Положение от правого края */
+    border: 1px #333 solid;
+    background-color: #DDD;
+    height: 40px;
+    width: 200px;
+    -webkit-animation: pop 10s linear forwards;
+    animation: pop 10s linear forwards;
+    vertical-align: middle;
+}
+
+@-webkit-keyframes pop {
+    0%  { opacity: 0; }
+    5% { opacity: 1; }
+    90% { opacity: 1; transform: translateY(0px);}
+    99% { opacity: 0; transform: translateY(30px);}
+    100% { opacity: 0; }
+}
+
+@-moz-keyframes pop {
+    0%  { opacity: 0; }
+    5% { opacity: 1; }
+    90% { opacity: 1; transform: translateY(0px);}
+    99% { opacity: 0; transform: translateY(30px);}
+    100% { opacity: 0; }
+}
+
+@keyframes pop {
+    0%  { opacity: 0; }
+    5% { opacity: 1; }
+    90% { opacity: 1; transform: translateY(0px);}
+    99% { opacity: 0; transform: translateY(30px);}
+    100% { opacity: 0; }
+}

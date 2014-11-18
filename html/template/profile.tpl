@@ -57,6 +57,7 @@
             </td>
         </tr>
     </table>
+    {message}
 </div>
 </body>
 </html>

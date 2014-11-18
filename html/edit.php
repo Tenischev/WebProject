@@ -11,6 +11,8 @@ if ($is_logged){
             $publicList = 0;
             if (isset($_POST['public'])){
                 $publicList = 1;
+            } else {
+                mysql_query("DELETE FROM bookmarks WHERE id_list = '$idList';")
             }
             mysql_query("UPDATE lists SET text = '$textList', name = '$nameList', public = '$publicList' WHERE id = '$idList' AND user = '$user_name';");
             header('Location: profile.php');

@@ -11,11 +11,16 @@ $bookmarkButton = '<form method="post" class="list_buttons">
                        <input type="hidden" name="id_list" value="{id_list}">
                        <input type="submit" name="bookmark" value=" " class="bookmark">
                    </form>';
+$popMessage = '<div class="pop_message">
+                   <p style="margin: 0;">{message_text}</p>
+               </div>';
 
 if ($is_logged){
     if (isset($_POST['search'])){
         header('Location: search.php?find='.$_POST['search']);
     } else {
+        $message = '';
+        $messageText = '';
         if (isset($_GET['user'])){ // for looks page another user
             $user = $_GET['user'];
             $link = "&user=".$user;
@@ -66,6 +71,9 @@ if ($is_logged){
             }
             if ((isset($_POST['delete'])) and ($user == $user_name) and (is_numeric($_POST['id_list'])) and ($_POST['id_list'] > 0)){
                 mysql_query("DELETE FROM lists WHERE id = '".$_POST['id_list']."' and user = '$user_name';");
+                mysql_query("DELETE FROM bookmarks WHERE id_list = '".$_POST['id_list']."';");
+                $message = $popMessage;
+                $messageText = 'Список удален!';
             }
             $flagEdit = false;
             if ((isset($_POST['edit'])) and ($user == $user_name) and (is_numeric($_POST['id_list'])) and ($_POST['id_list'] > 0)){
@@ -84,8 +92,12 @@ if ($is_logged){
                         $query2 = mysql_query("SELECT * FROM bookmarks WHERE id_list = '".$_POST['id_list']."' AND user = '$user_name';");
                         if (mysql_num_rows($query2) == 1){
                             mysql_query("DELETE FROM bookmarks WHERE id_list = '".$_POST['id_list']."' AND user = '$user_name';");
+                            $message = $popMessage;
+                            $messageText = 'Закладка удалена';
                         } else {
                             mysql_query("INSERT INTO bookmarks (id, id_list, user) VALUES (NULL, '".$_POST['id_list']."', '$user_name');");
+                            $message = $popMessage;
+                            $messageText = 'Закладка добавлена';
                         }
                         mysql_free_result($query2);
                     }
@@ -145,6 +157,8 @@ if ($is_logged){
                 $tpl->set('{id_list}', $idLookList);
                 $tpl->set('{bookmarks}', $bookmarks);
                 $tpl->set('{bookmarks_list}', $bookmarksList);
+                $tpl->set('{message}', $message);
+                $tpl->set('{message_text}', $messageText);
                 $tpl->compile();
             }
         }
