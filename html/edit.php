@@ -3,7 +3,47 @@ define('TheListsProject', true);
 include 'settings.php';
 
 if ($is_logged){
-
+    if (isset($_POST['edit'])){
+        if (is_numeric($_POST['id'])){
+            $idList = $_POST['id'];
+            $nameList = htmlspecialchars($_POST['name']);
+            $textList = mysql_real_escape_string(htmlspecialchars($_POST['text']));
+            $publicList = 0;
+            if (isset($_POST['public'])){
+                $publicList = 1;
+            }
+            mysql_query("UPDATE lists SET text = '$textList', name = '$nameList', public = '$publicList' WHERE id = '$idList' AND user = '$user_name';");
+            header('Location: profile.php');
+        } else {
+            header('Location: index.php');
+        }
+    } else if (isset($_GET['id'])){
+        if (is_numeric($_GET['id'])){
+            $idList = $_GET['id'];
+            $query = mysql_query("SELECT * FROM lists WHERE id = '$idList' AND user = '$user_name';");
+            if (mysql_num_rows($query) == 1){
+                $list = mysql_fetch_array($query);
+                if ($list['public'] == 1){
+                    $listChecked = "checked";
+                } else {
+                    $listChecked = "";
+                }
+                $tpl->load('edit.tpl');
+                $tpl->set('{profile_name}', $user_name);
+                $tpl->set('{id_list}', $idList);
+                $tpl->set('{name_list}', $list['name']);
+                $tpl->set('{text_list}', (htmlspecialchars($list['text'])));
+                $tpl->set('{checked}', $listChecked);
+                $tpl->compile();
+            } else {
+                header('Location: index.php');
+            }
+        } else {
+            header('Location: index.php');
+        }
+    } else {
+        header('Location: index.php');
+    }
 } else {
     header('Location: index.php');
 }
