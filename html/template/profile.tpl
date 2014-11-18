@@ -30,6 +30,7 @@
                     <span>
                         {lists}
                     </span>
+                    {bookmarks}
                 </div>
             </td>
             <td style="height: 100%; width: 70%;  min-height: 400px">
