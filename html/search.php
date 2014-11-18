@@ -11,14 +11,18 @@ if ($is_logged){
     $query_lists = mysql_query("SELECT * FROM lists WHERE name LIKE '%$find%' AND public = '1';");
     $users = '';
     $lists = '';
-    if (mysql_num_rows($query_users) >= 1){
-        while ($row = mysql_fetch_array($query_users)){
-            $users .= "<a href='/profile.php?user=".$row['name']."'>".$row['name']."</a><br>";
+    if ($query_users){
+        if (mysql_num_rows($query_users) >= 1){
+            while ($row = mysql_fetch_array($query_users)){
+                $users .= "<a href='/profile.php?user=".$row['name']."'>".$row['name']."</a><br>";
+            }
         }
     }
-    if (mysql_num_rows($query_lists) >= 1){
-        while ($row = mysql_fetch_array($query_lists)){
-            $lists .= "<a href='/profile.php?user=".$row['user']."&id=".$row['id']."'>".$row['name']."</a><br>";
+    if ($query_lists){
+        if (mysql_num_rows($query_lists) >= 1){
+            while ($row = mysql_fetch_array($query_lists)){
+                $lists .= "<a href='/profile.php?user=".$row['user']."&id=".$row['id']."'>".$row['name']."</a><br>";
+            }
         }
     }
     $tpl->load('search.tpl');

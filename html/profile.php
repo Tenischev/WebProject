@@ -64,11 +64,11 @@ if ($is_logged){
                     mysql_free_result($query);
                 }
             }
-            if ((isset($_POST['delete'])) and ($user == $user_name) and (is_numeric($_POST['id_list']))){
+            if ((isset($_POST['delete'])) and ($user == $user_name) and (is_numeric($_POST['id_list'])) and ($_POST['id_list'] > 0)){
                 mysql_query("DELETE FROM lists WHERE id = '".$_POST['id_list']."' and user = '$user_name';");
             }
             $flagEdit = false;
-            if ((isset($_POST['edit'])) and ($user == $user_name) and (is_numeric($_POST['id_list']))){
+            if ((isset($_POST['edit'])) and ($user == $user_name) and (is_numeric($_POST['id_list'])) and ($_POST['id_list'] > 0)){
                 $query = mysql_query("SELECT * FROM lists WHERE id = '".$_POST['id_list']."' user = '$user_name';");
                 if (mysql_num_rows($query) == 1){
                     header('Location: edit.php?id='.$_POST['id_list']);
@@ -76,7 +76,7 @@ if ($is_logged){
                 }
                 mysql_free_result($query);
             }
-            if (isset($_POST['bookmark']) and (is_numeric($_POST['id_list']))){
+            if (isset($_POST['bookmark']) and (is_numeric($_POST['id_list'])) and ($_POST['id_list'] > 0)){
                 $query = mysql_query("SELECT * FROM lists WHERE id = '".$_POST['id_list']."';");
                 if (mysql_num_rows($query) == 1){
                     $row = mysql_fetch_array($query);
