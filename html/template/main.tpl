@@ -6,9 +6,9 @@
 </head>
 <body>
   <div class="header">
-    <a class="link" href="main.tpl" title="The Lists" >The Lists</a>
+    <a class="link" href="/" title="The Lists" >The Lists</a>
   </div>
-  <div class="enter_register">      
+  <div class="box enter_register">      
         <a class="button link" href="/login.php">Вход</a>
         <a class="button link" href="/register.php">Регистрация</a>
   </div>
