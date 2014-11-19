@@ -22,11 +22,37 @@
     <form method="post">
         <div style="height: 80%;  width: 60%; margin: 2% 20%;  min-height: 400px; background: #E5E5E5; border: solid 1px black; padding: 10px">
             <input type="hidden" name="id" value="{id_list}">
-            <input type="text" autofocus required name="name" maxlength="15" placeholder="Название списка" value="{name_list}" tabindex="1" style="font-size: 20px; width: 100%">
+            <table style="width: 100%; border-spacing: 1;">
+                <tr style="width: 100%;">
+                    <td style="width: 90%; padding: 0">
+                        <input type="text" autofocus required name="name" maxlength="15" placeholder="Название списка" value="{name_list}" tabindex="1" style="font-size: 22px; width: 95%">
+                    </td>
+                    <td style="width: 5%; padding: 0; vertical-align: middle;" class="type_list" align="center">
+                        <input type="radio" id="fradio" name="type_list" value="mark" hidden {checked_mark}>
+                        <label for="fradio" class="marked_list"></label>
+                    </td>
+                    <td style="width: 5%; padding: 0; vertical-align: middle;" class="type_list" align="center">
+                        <input type="radio" id="sradio" name="type_list" value="number" hidden {checked_number}>
+                        <label for="sradio" class="numbered_list"></label>
+                    </td>
+                </tr>
+            </table>
             <hr>
             <textarea name="text" rows="25" cols="10" required placeholder="Поле для ввода списка" tabindex="2" style="height: 100%;  width: 100%; resize: vertical;">{text_list}</textarea>
             <hr>
-            <p style="margin: 0"><input type="checkbox" tabindex="3" name="public" {checked}><label>Сделать публичным</label><input type="submit" name="edit" tabindex="4" value="Сохранить" style="margin: 0 0 0 50% "></p>
+            <table style="width: 100%; border-spacing: 0; border-collapse: collapse;">
+                <tr style="width: 100%;">
+                    <td style="width: 50%; padding: 0">
+                        <label>
+                            <input type="checkbox" tabindex="3" name="public" {checked}>
+                            Сделать публичным
+                        </label>
+                    </td>
+                    <td style="width: 50%; padding: 0" align="right">
+                        <input type="submit" name="edit" tabindex="4" value="Сохранить" style="margin: 0">
+                    </td>
+                </tr>
+            </table>
         </div>
     </form>
 </div>

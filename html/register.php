@@ -6,7 +6,7 @@ if (!$is_logged){
     $form = '<form class="box" method="post">
                  <input type="hidden" name="register" value="yes">
                  <span class="editText">Логин: <input type="text" name="nick" maxlength="15"></span>
-                 <span class="editText">Почта: <input type="text" name="email" maxlength="30"></span>
+                 <span class="editText">Почта: <input type="email" name="email" maxlength="30"></span>
                  <span class="editText">Пароль: <input type="password" name="pass" maxlength="15"></span>
                  <span class="editText">Подтверждение: <input type="password" name="pass_confirm" maxlength="15"></span>
                  <span class="button"><input type="submit" value="Зарегистрироваться"></span>

@@ -58,94 +58,108 @@ if ($is_logged){
                 if (is_numeric($_GET['id'])){
                     $idList = $_GET['id'];
                     $query = mysql_query("SELECT * FROM lists WHERE id = '$idList' AND user = '$user' AND public = '1';");
-                    if (mysql_num_rows($query) == 1){
-                        $row = mysql_fetch_array($query);
-                        $teg = getTeg($row['type']);
-                        $nameList = $row['name'];
-                        $textList = "<".$teg."><li>".str_replace("\n", "</li><li>", str_replace("\r\n", "</li><li>", nl2br(htmlspecialchars($row['text']))))."</li></".$teg.">";
-                        $number = 0;
-                        $idLookList = $idList;
+                    if ($query){
+                        if (mysql_num_rows($query) == 1){
+                            $row = mysql_fetch_array($query);
+                            $teg = getTeg($row['type']);
+                            $nameList = $row['name'];
+                            $textList = "<".$teg."><li>".str_replace("\n", "</li><li>", str_replace("\r\n", "</li><li>", nl2br(htmlspecialchars($row['text']))))."</li></".$teg.">";
+                            $number = 0;
+                            $idLookList = $idList;
+                        }
+                        mysql_free_result($query);
                     }
-                    mysql_free_result($query);
                 }
             }
             if ((isset($_POST['delete'])) and ($user == $user_name) and (is_numeric($_POST['id_list'])) and ($_POST['id_list'] > 0)){
-                mysql_query("DELETE FROM lists WHERE id = '".$_POST['id_list']."' and user = '$user_name';");
+                mysql_query("DELETE FROM lists WHERE id = '".$_POST['id_list']."' AND user = '$user_name';");
                 mysql_query("DELETE FROM bookmarks WHERE id_list = '".$_POST['id_list']."';");
                 $message = $popMessage;
                 $messageText = 'Список удален!';
             }
             $flagEdit = false;
             if ((isset($_POST['edit'])) and ($user == $user_name) and (is_numeric($_POST['id_list'])) and ($_POST['id_list'] > 0)){
-                $query = mysql_query("SELECT * FROM lists WHERE id = '".$_POST['id_list']."' user = '$user_name';");
-                if (mysql_num_rows($query) == 1){
-                    header('Location: edit.php?id='.$_POST['id_list']);
-                    $flagEdit = true;
+                $query = mysql_query("SELECT * FROM lists WHERE id = '".$_POST['id_list']."' AND user = '$user_name';");
+                if ($query){
+                    if (mysql_num_rows($query) == 1){
+                        header('Location: edit.php?id='.$_POST['id_list']);
+                        $flagEdit = true;
+                    }
+                    mysql_free_result($query);
                 }
-                mysql_free_result($query);
             }
             if (isset($_POST['bookmark']) and (is_numeric($_POST['id_list'])) and ($_POST['id_list'] > 0)){
                 $query = mysql_query("SELECT * FROM lists WHERE id = '".$_POST['id_list']."';");
-                if (mysql_num_rows($query) == 1){
-                    $row = mysql_fetch_array($query);
-                    if (!($row['user'] == $user_name)){
-                        $query2 = mysql_query("SELECT * FROM bookmarks WHERE id_list = '".$_POST['id_list']."' AND user = '$user_name';");
-                        if (mysql_num_rows($query2) == 1){
-                            mysql_query("DELETE FROM bookmarks WHERE id_list = '".$_POST['id_list']."' AND user = '$user_name';");
-                            $message = $popMessage;
-                            $messageText = 'Закладка удалена';
-                        } else {
-                            mysql_query("INSERT INTO bookmarks (id, id_list, user) VALUES (NULL, '".$_POST['id_list']."', '$user_name');");
-                            $message = $popMessage;
-                            $messageText = 'Закладка добавлена';
+                if ($query){
+                    if (mysql_num_rows($query) == 1){
+                        $row = mysql_fetch_array($query);
+                        if (!($row['user'] == $user_name)){
+                            $query2 = mysql_query("SELECT * FROM bookmarks WHERE id_list = '".$_POST['id_list']."' AND user = '$user_name';");
+                            if ($query2){
+                                if (mysql_num_rows($query2) == 1){
+                                    mysql_query("DELETE FROM bookmarks WHERE id_list = '".$_POST['id_list']."' AND user = '$user_name';");
+                                    $message = $popMessage;
+                                    $messageText = 'Закладка удалена';
+                                } else {
+                                    mysql_query("INSERT INTO bookmarks (id, id_list, user) VALUES (NULL, '".$_POST['id_list']."', '$user_name');");
+                                    $message = $popMessage;
+                                    $messageText = 'Закладка добавлена';
+                                }
+                                mysql_free_result($query2);
+                            }
                         }
-                        mysql_free_result($query2);
                     }
+                    mysql_free_result($query);
                 }
-                mysql_free_result($query);
             }
             if (!$flagEdit){
                 $i = 0;
                 $query = mysql_query("SELECT * FROM lists WHERE user = '$user';");
-                if (mysql_num_rows($query) >= 1){
-                    while ($row = mysql_fetch_array($query)){
-                        if (($row['public'] == 1) or ($user == $user_name)){
-                            $nameCurList = $row['name'];
-                            $teg = getTeg($row['type']);
-                            $i += 1;
-                            $lists = $lists.'<a href="?list='.$i.$link.'">'.$nameCurList.'</a><br>';
-                            if ($number == $i){
-                                $idLookList = $row['id'];
-                                $nameList = $nameCurList;
-                                $textList = "<".$teg."><li>".str_replace("\n", "</li><li>", str_replace("\r\n", "</li><li>", nl2br(htmlspecialchars($row['text']))))."</li></".$teg.">";
-                            }
-                        }
-                    }
-                }
-                mysql_free_result($query);
-                $bookmarksList = "";
-                if ($user == $user_name){
-                    $query = mysql_query("SELECT * FROM bookmarks WHERE user = '$user';");
+                if ($query){
                     if (mysql_num_rows($query) >= 1){
                         while ($row = mysql_fetch_array($query)){
-                            $query2 = mysql_query("SELECT * FROM lists WHERE id = '".$row['id_list']."' AND public = '1';");
-                            if (mysql_num_rows($query2) == 1){
-                                $row2 = mysql_fetch_array($query2);
-                                $nameCurList = $row2['name'];
-                                $teg = getTeg($row2['type']);
+                            if (($row['public'] == 1) or ($user == $user_name)){
+                                $nameCurList = $row['name'];
+                                $teg = getTeg($row['type']);
                                 $i += 1;
-                                $bookmarksList = $bookmarksList.'<a href="?list='.$i.'">'.$nameCurList.'</a><br>';
+                                $lists = $lists.'<a href="?list='.$i.$link.'">'.$nameCurList.'</a><br>';
                                 if ($number == $i){
-                                    $button = $bookmarkButton;
-                                    $idLookList = $row2['id'];
+                                    $idLookList = $row['id'];
                                     $nameList = $nameCurList;
-                                    $textList = "<".$teg."><li>".str_replace("\n", "</li><li>", str_replace("\r\n", "</li><li>", nl2br(htmlspecialchars($row2['text']))))."</li></".$teg.">";
+                                    $textList = "<".$teg."><li>".str_replace("\n", "</li><li>", str_replace("\r\n", "</li><li>", nl2br(htmlspecialchars($row['text']))))."</li></".$teg.">";
                                 }
                             }
-                            mysql_free_result($query2);
                         }
                     }
                     mysql_free_result($query);
+                }
+                $bookmarksList = "";
+                if ($user == $user_name){
+                    $query = mysql_query("SELECT * FROM bookmarks WHERE user = '$user';");
+                    if ($query){
+                        if (mysql_num_rows($query) >= 1){
+                            while ($row = mysql_fetch_array($query)){
+                                $query2 = mysql_query("SELECT * FROM lists WHERE id = '".$row['id_list']."' AND public = '1';");
+                                if ($query2){
+                                    if (mysql_num_rows($query2) == 1){
+                                        $row2 = mysql_fetch_array($query2);
+                                        $nameCurList = $row2['name'];
+                                        $teg = getTeg($row2['type']);
+                                        $i += 1;
+                                        $bookmarksList = $bookmarksList.'<a href="?list='.$i.'">'.$nameCurList.'</a><br>';
+                                        if ($number == $i){
+                                            $button = $bookmarkButton;
+                                            $idLookList = $row2['id'];
+                                            $nameList = $nameCurList;
+                                            $textList = "<".$teg."><li>".str_replace("\n", "</li><li>", str_replace("\r\n", "</li><li>", nl2br(htmlspecialchars($row2['text']))))."</li></".$teg.">";
+                                        }
+                                    }
+                                    mysql_free_result($query2);
+                                }
+                            }
+                        }
+                        mysql_free_result($query);
+                    }
                 }
                 $tpl->load('profile.tpl');
                 $tpl->set('{lists}', $lists);

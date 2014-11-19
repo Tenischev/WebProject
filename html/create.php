@@ -6,11 +6,16 @@ if ($is_logged){
     if (isset($_POST['create'])){
         $nameList = htmlspecialchars($_POST['name']);
         $textList = mysql_real_escape_string(htmlspecialchars($_POST['text']));
+        if ($_POST['type_list'] == "mark"){
+            $typeList = 0;
+        } else {
+            $typeList = 1;
+        }
         $publicList = 0;
         if (isset($_POST['public'])){
             $publicList = 1;
         }
-        mysql_query("INSERT INTO lists (id, user, name, text, public) VALUES (NULL, '$user_name', '$nameList', '$textList', '$publicList');");
+        mysql_query("INSERT INTO lists (id, user, name, text, public, type) VALUES (NULL, '$user_name', '$nameList', '$textList', '$publicList', '$typeList');");
         header('Location: profile.php');
     } else {
         $tpl->load('create.tpl');
