@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/images.css">
+    <title>Изменение существующего списка - The Lists</title>
 </head>
 <body>
 

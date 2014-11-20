@@ -182,16 +182,16 @@ body{
 
 .search{
     background-color: white;
-    margin: 0;
+    margin: 0 0 0 20%;
     border: solid 1px white;
     border-radius: 10px;
     padding: 1px 10px;
     display: inline-block;
+    
 }
 
 #title{
     display: inline-block;
-    float: left;
 }
 
 .inputtext{
@@ -200,16 +200,21 @@ body{
 }
 
 #profile_settings{
-    display: inline-block;    
-    margin: 0px;
+    position: absolute;
+    right: 0;
+    top: 5px;
+    display: inline;    
     padding: 0px;
+    margin: 0;
 }
 #profile{
 }
 
 #settings{
+
 }
 
-#logout{    
+#logout{
+
 }
 
