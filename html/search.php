@@ -29,6 +29,7 @@ if ($is_logged){
     $tpl->set('{profile_name}', $user_name);
     $tpl->set('{people}', $users);
     $tpl->set('{lists}', $lists);
+    $tpl->set('{profile_avatar}', $user_icon);
     $tpl->compile();
 } else {
     header('Location: index.php');

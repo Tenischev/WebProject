@@ -50,6 +50,7 @@ if ($is_logged){
                 $tpl->set('{checked}', $listChecked);
                 $tpl->set('{checked_mark}', $check_m);
                 $tpl->set('{checked_number}', $check_n);
+                $tpl->set('{profile_avatar}', $user_icon);
                 $tpl->compile();
             } else {
                 header('Location: index.php');

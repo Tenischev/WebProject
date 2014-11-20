@@ -20,6 +20,7 @@ if ($is_logged){
     } else {
         $tpl->load('create.tpl');
         $tpl->set('{profile_name}', $user_name);
+        $tpl->set('{profile_avatar}', $user_icon);
         $tpl->compile();
     }
 } else {

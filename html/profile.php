@@ -173,6 +173,7 @@ if ($is_logged){
                 $tpl->set('{bookmarks_list}', $bookmarksList);
                 $tpl->set('{message}', $message);
                 $tpl->set('{message_text}', $messageText);
+                $tpl->set('{profile_avatar}', $user_icon);
                 $tpl->compile();
             }
         }
