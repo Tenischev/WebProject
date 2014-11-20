@@ -11,7 +11,7 @@
     <div id="header">        
         <a class="title link" href="/" title="The Lists">The Lists</a>
         <span class="search"><form action="search.php">
-            <input class="inputtext" type="text" maxlength="15" name="find" placeholder="Поиск">
+            <input class="inputtext" type="search" maxlength="15" name="find" placeholder="Поиск">
         </form></span>
         <ul id="profile_settings">
             <li id="profile"><a href="/profile.php">
