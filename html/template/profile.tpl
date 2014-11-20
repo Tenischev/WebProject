@@ -43,6 +43,7 @@
         <tr style="height: 100%; width: 100%;">
             <td style="height: 100%; width: 25%; padding: 0">
                 <div style="height: 100%; padding: 5px 10px; background: #E5E5E5; border-right: solid 1px black; min-width: 300px;">
+                    <img src="avatar/{user_avatar}" width="24" height="24">
                     <span style="font-size: 20px;">
                         {user_name}
                     </span>

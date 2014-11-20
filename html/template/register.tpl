@@ -8,10 +8,10 @@
   <div class="header">
     <a class="link" href="/" title="The Lists" >The Lists</a>
   </div>
-  <div class="box">
-      <span class="text">{message}</span>
-      {form}
+      <form class="box" method="post">
+          <span class="text">{message}</span>
+          {form}
+      </form>
     </span>
-  </div>
 </body>
 </html>

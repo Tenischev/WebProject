@@ -44,6 +44,8 @@ if ($is_logged){
             mysql_free_result($query);
             header('Location: profile.php');
         } else {
+            $row = mysql_fetch_array($query);
+            $userIcon = $row['icon'];
             mysql_free_result($query);
             $idLookList = -1;
             $number = 1;
@@ -174,6 +176,7 @@ if ($is_logged){
                 $tpl->set('{message}', $message);
                 $tpl->set('{message_text}', $messageText);
                 $tpl->set('{profile_avatar}', $user_icon);
+                $tpl->set('{user_avatar}', $userIcon);
                 $tpl->compile();
             }
         }
