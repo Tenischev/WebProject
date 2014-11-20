@@ -5,15 +5,17 @@
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-  <div class="header">
-    <a class="link" href="/" title="The Lists" >The Lists</a>
-  </div>
-      <form class="box" method="post">
+    <div id="header">
+        <ul>
+            <li class="title"><a class="link" href="/" title="The Lists">The Lists</a></li>
+        </ul>    
+    </div>
+    <form class="box" method="post">
         <span class="text">{message}</span>
         <input type="hidden" name="auth" value="yes">
         <span class="editText">Логин: <input type="text" name="nick" maxlength="15"></span>
         <span class="editText">Пароль: <input type="password" name="pass" maxlength="15"></span>
         <span class="button"><input type="submit" value="Вход"></span>
-      </form>
+    </form>
 </body>
 </html>
