@@ -3,22 +3,21 @@ a {
     color: white;
 }
 
-#header ul{
+#header{
     background: #7777E7;
-    padding: 5px 10px;
     width: 100%;    
-    max-height: 10%;
     margin: 0px;
-}
-
-#header ul{
+    padding: 5px 10px;
     height: auto;
+}
+#header::after{
+    clear: both;
 }
 
 #header li {
     display: inline-block;
-    padding: 0px;
     margin: 0px;
+    padding: 0px;
 }
 
 body{
@@ -168,30 +167,49 @@ body{
 }
 
 .tools {
+    display: inline-block;
     width:            24px;
     height:           24px;
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAXCAYAAAARIY8tAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAPYwAAD2MB18Fk4AAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAGaSURBVEiJrdUxaxRREAfw39siHCcoASGBfICEK0OqfAHbaw3KIUYR0lhZ+QEklalEFAu/RUoVm4CVYmevpJCAERuZFLsL7+527/buMjDFmzf/mXkzb2ZEhC6MV4iKn3fGdTS+jsvMwTn6XbCFjFJJBymlLeP0CP3sfBuPJ7CDlNJhSimNIbMoC7yrIvyPU4xwjIss+pov8AIP8TmTv0ExlSIMG4wsy/tNDnpVblc1/gNpqgYR8Q+vrU5vo4q4Npy/Ym9OdD8rnqWz2/qLcL8lqo/YiYjNiNjETiVroruTgjXcw1lLRN/Qa+iNXnXXhPmCJ7ipw5NHMxpwNAf7p8BGy1Nr+r7kHdwolCNgFg2WvINfcAtH+Or6anCmrOvaJOhlC+ADtjO97UrWpHvSOk2x2wJapA/2ZvXBnTk53TD/UwzHTln0STlHVp1F57Ka5Q72r8F4zcMmB4VyltdKn/DA7H1wrGy2U+UOCeVOmd4HWZoOMZiQP21w8GxCZwsHslG9yE7uG98Vl1hfeCe3UUT8xUkmeh8Rv7tgrwCkAmqTL+z49QAAAABJRU5ErkJggg21f98d4eae7cb36ede35ceb084751006');
 }
 
 .power {
+    display: inline-block;
     width:            24px;
     height:           24px;
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAQAAABKfvVzAAABM0lEQVR4AcXPz6uMURzH8ZcxUmNmFhILZGmDsVCakR3Jip2sEJJfkYUF2Sg9/4DYW7CZmsJkq4nSvYt7u+mWhQ01FhYoNT+aHPVsPGfm1GQ1r+/uU+9Ox8I0nfEfTgqCYxJKUvaAffODLVo2Kao7bTvpYJdP3ruj6JGOzw6mgrqunfio6AeqXtoxHZS1HUBXV1FmFbt1bI6Ds47jl6tiA+eM0XQqDi6Be76atuYpOBoHh8BrKb3ZYJsKvvsC6INvgBWwX+1f8NMANWXAK3c91AZsBUMDBe8EQUPKFUHwNv7DErhs1kYXwIc4eGGCa06Ydt9hjDwX80AQ/HZbCUDNY3/y/Wbq6Z6Q37onLrrlmb580QFgAwCqMtejBUYymbE0RyybCPIz9MZec1W03HBeQ9kC/AVhF1MOuI9FzQAAAABJRU5ErkJggg7f892518a543885356a60c2709de5b99');
 }
 
 .search{
-    display: inline;
     background-color: white;
     margin: 0;
     border: solid 1px white;
     border-radius: 10px;
     padding: 1px 10px;
+    display: inline-block;
 }
 
-.empty{
-    width: 25%;
+#title{
+    display: inline-block;
+    float: left;
 }
 
-.title{
-    width: 15%;
+.inputtext{
+    border: 0px;
+    outline: 0;
 }
+
+#profile_settings{
+    display: inline-block;    
+    margin: 0px;
+    padding: 0px;
+}
+#profile{
+}
+
+#settings{
+}
+
+#logout{    
+}
+

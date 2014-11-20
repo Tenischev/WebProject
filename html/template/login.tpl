@@ -5,10 +5,8 @@
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    <div id="header">
-        <ul>
-            <li class="title"><a class="link" href="/" title="The Lists">The Lists</a></li>
-        </ul>    
+    <div id="header">        
+        <a class="title link" href="/" title="The Lists">The Lists</a>
     </div>
     <form class="box" method="post">
         <span class="text">{message}</span>

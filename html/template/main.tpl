@@ -5,14 +5,12 @@
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-  <div id="header">
-        <ul>
-            <li class="title"><a class="link" href="/" title="The Lists">The Lists</a></li>            
-        </ul>    
+    <div id="header">        
+        <a class="title link" href="/" title="The Lists">The Lists</a>
     </div>
-  <div class="box enter_register">      
+    <div class="box enter_register">      
         <a class="button link" href="/login.php">Вход</a>
         <a class="button link" href="/register.php">Регистрация</a>
-  </div>
+    </div>
 </body>
 </html>

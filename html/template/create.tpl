@@ -5,20 +5,18 @@
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    <div id="header">
-        <ul>
-            <li class="title"><a class="link" href="/" title="The Lists">The Lists</a></li>
-            <li class="empty"></li>            
-            <li><form action="search.php" style="width: 100%;">
-                <input type="text" class="search" maxlength="15" name="find" placeholder="Поиск">
-            </form></li>
-            <li class="empty"></li> 
-            <li><a href="/profile.php">
+    <div id="header">        
+        <a class="title link" href="/" title="The Lists">The Lists</a>
+        <span class="search"><form action="search.php">
+            <input class="inputtext" type="text" maxlength="15" name="find" placeholder="Поиск">
+        </form></span>
+        <ul id="profile_settings">
+            <li id="profile"><a href="/profile.php">
                 <img src="avatar/{profile_avatar}" width="24" height="24">
-                <span >{profile_name}</span>
+                {profile_name}
             </a></li>                
-            <li><a href="/setting.php"><div class="tools"></div></a></li>
-            <li><a href="/unlogin.php"><div class="power"></div></a></li>
+            <li id="settings"><a class="tools"href="/setting.php"></a></li>
+            <li id="logout"><a class="power" href="/unlogin.php"></a></li>
         </ul>    
     </div>
     <form method="post">
