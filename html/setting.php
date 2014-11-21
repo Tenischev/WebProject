@@ -40,7 +40,7 @@ if ($is_logged){
             if (($_FILES['filename']['type'] = "image/png") or ($_FILES['filename']['type'] = "image/jpeg")){
                 if (is_uploaded_file($_FILES['filename']['tmp_name'])){
                     $nameFile = $user_name.".".substr($_FILES['filename']['type'], 6);
-                    move_uploaded_file($_FILES['filename']['tmp_name'], "./avatar/".$nameFile);
+                    move_uploaded_file($_FILES['filename']['tmp_name'], "avatar/".$nameFile);
                     mysql_query("UPDATE list_users SET icon = '$nameFile' WHERE name = '$user_name';");
                     $message = $popMessage;
                     $messageText = 'Аватар успешно загружен';
