@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles/style.css">
+    <title>Настройки - The Lists</title>
 </head>
 <body>
 <div id="header">

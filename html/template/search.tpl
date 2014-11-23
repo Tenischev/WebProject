@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<html>
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles/style.css">
@@ -21,7 +21,7 @@
             <li id="logout"><a class="power" href="/unlogin.php"></a></li>
         </ul>    
     </div>
-    <div style="height: 80%; width: 60%; margin: 2% 20%;  min-height: 400px; background: #E5E5E5; border: solid 1px black; padding: 10px">
+    <div style="height: 80%; width: 60%; margin: 2% 20%;  min-height: 400px; background: white; padding: 10px; border-radius: 20px;">
         <table style="height: 100%; width: 100%;">
             <thead>
                 <tr>

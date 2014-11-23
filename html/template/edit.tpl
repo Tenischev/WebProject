@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html style="height: 100%" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<html>
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles/style.css">
