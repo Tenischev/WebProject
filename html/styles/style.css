@@ -38,11 +38,19 @@ body{
     border-radius: 20px;
 }
 
+.rectangle{
+    display: block;
+    background: #7777E7;
+    border-radius: 20px;
+    margin: 1%;
+}
+
 .button{
     position: relative;
     display: block;
-    width: 100%;
+    #width: 100%;
     height: auto;
+    width: auto;
     text-align: center;
     background-color: transparent;
 }
@@ -50,15 +58,17 @@ body{
 .editText{    
     display: block;
     text-align: right;
-    width: 100%;
+    width: auto;
     color: white;
+    padding: 5px 0px;
 }
 
 .text{
     display: block;    
     text-align: center;
-    width: 100%;    
+    #width: 100%;    
     color: white;
+    padding: 5px 25px 0px 10px;
 }
 
 .link:hover{
