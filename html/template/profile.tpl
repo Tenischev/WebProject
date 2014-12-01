@@ -5,7 +5,8 @@
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/images.css">    
     <title>{profile_name} - The Lists</title>
-</head>
+</head>   
+    
 <body>
     <div id="header">        
         <a class="title link" href="/" title="The Lists">The Lists</a>
@@ -26,14 +27,34 @@
             <td style="height: 100%; width: 25%; padding: 0">
                 <div style="height: 100%; padding: 5px 10px; background: #E5E5E5; border-right: solid 1px black; min-width: 300px;">
                     <img src="avatar/{user_avatar}" width="24" height="24">
+                   
                     <span style="font-size: 20px;">
                         {user_name}
+                       <form method="post">
+                        <span class="button"><input type="submit" value="Добавить список"></span>
+                        </form>
+                        
                     </span>
                     <hr>
-                    <span>
-                        {lists}
-                    </span>
-                    {bookmarks}
+                    <div>
+                    <a href="javascript:collapsElement('myLists')" rel="nofollow">Мои списки</a>
+                        <div id="myLists" style="display:none">
+                            <span>
+                                {lists}
+                            </span>
+                        </div>
+                    
+                    </div>
+                    
+                    <div>
+                    <a href="javascript:collapsElement('bookMark')" rel="nofollow">Закладки</a>
+                        <div id="bookMark" style="display:none">
+                            <span>
+                                {bookmarks}
+                            </span>
+                        </div>
+                    
+                    </div>
                 </div>
             </td>
             <td style="height: 100%; width: 70%;  min-height: 400px">
@@ -62,4 +83,16 @@
     </table>
     {message}
 </body>
+
+<script>
+ function collapsElement(id){
+     if (document.getElementById(id).style.display!="none"){
+       document.getElementById(id).style.display='none';  
+     } else {
+      document.getElementById(id).style.display='';   
+     }
+ }
+    
+</script>     
+    
 </html>

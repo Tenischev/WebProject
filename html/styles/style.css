@@ -20,6 +20,7 @@ a {
     padding: 0px;
 }
 
+
 body{
     margin: 0px;
     background: white;
@@ -38,11 +39,13 @@ body{
     border-radius: 20px;
 }
 
-.rectangle{
+.rectangle{   
+    width: 50%;
     display: block;
     background: #7777E7;
     border-radius: 20px;
-    margin: 1%;
+    margin: 1% auto 0 auto;
+    min-width: 350px;
 }
 
 .button{
@@ -57,7 +60,7 @@ body{
 
 .editText{    
     display: block;
-    text-align: right;
+    text-align: center;
     width: auto;
     color: white;
     padding: 5px 0px;

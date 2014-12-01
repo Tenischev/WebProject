@@ -20,17 +20,32 @@
         </ul>
     </div>
     <div>
-        <form class="rectangle" method="post">
-            <span class="text">Смена пароля</span>
-            <span class="editText">Старый пароль:<input type="password" maxlength="20" name="old_pass"></span>
-            <span class="editText">Новый пароль:<input type="password" maxlength="20" name="new_pass"></span>
-            <span class="button"><input type="submit" name="change_pass" value="Сменить"></span>
+        <form class="rectangle" method="post">                    
+                <span class="text">Смена пароля</span>
+            <table align="center">
+                <tr>
+                    <td>
+                    <span class="editText">Старый пароль:</span>
+                    </td>
+                    <td>
+                    <span class="editText"><input type="password" maxlength="20" name="old_pass"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="editText">Новый пароль:</span>
+                    </td>
+                    <td>
+                    <span class="editText"><input type="password" maxlength="20" name="new_pass"></span>
+                    </td>
+                </tr>
+            </table>
         </form>
         
         <form class="rectangle" method="post" enctype="multipart/form-data">
             <span class="text">Загрузить аватар(меньше 5КБ и 512*512)</span>
             <span class="editText"><input type="hidden" name="MAX_FILE_SIZE" value="5120" ></span>
-            <span class="editText"><input type="file" accept="image/jpeg,image/png" name="filename"></span>
+            <span class="editText"><input type="file" maxlength="5" accept="image/jpeg,image/png" name="filename"></span>
             <span class="button"><input type="submit" name="load_icon" value="Загрузить"></span>
         </form>
     {message}
