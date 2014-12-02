@@ -30,30 +30,19 @@
                    
                     <span style="font-size: 20px;">
                         {user_name}
-                       <form method="post">
-                        <span class="button"><input type="submit" value="Добавить список"></span>
-                        </form>
-                        
                     </span>
                     <hr>
                     <div>
-                    <a href="javascript:collapsElement('myLists')" rel="nofollow">Мои списки</a>
+                    <a href="javascript:collapsElement('myLists')" rel="nofollow">Списки</a>
                         <div id="myLists" style="display:none">
                             <span>
                                 {lists}
                             </span>
                         </div>
-                    
                     </div>
                     
                     <div>
-                    <a href="javascript:collapsElement('bookMark')" rel="nofollow">Закладки</a>
-                        <div id="bookMark" style="display:none">
-                            <span>
-                                {bookmarks}
-                            </span>
-                        </div>
-                    
+                        {bookmarks}
                     </div>
                 </div>
             </td>

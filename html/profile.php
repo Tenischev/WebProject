@@ -14,6 +14,15 @@ $bookmarkButton = '<form method="post" class="list_buttons">
 $popMessage = '<div class="pop_message">
                    <p style="margin: 0;">{message_text}</p>
                </div>';
+$createButton = '<form action="create.php">
+                     <span class="button"><input type="submit" value="Добавить список"></span>
+                 </form>';
+$bookmarksCollapse = '<a href="javascript:collapsElement('."'".'bookMark'."'".')" rel="nofollow">Закладки</a>
+                     <div id="bookMark" style="display:none">
+                         <span>
+                             {bookmarks_list}
+                         </span>
+                     </div>';
 
 if ($is_logged){
     if (isset($_POST['search'])){
@@ -31,12 +40,8 @@ if ($is_logged){
         } else {
             $user = $user_name;
             $link = '';
-            $lists = "<a href='/create.php'>Создать</a><br>";
-            $bookmarks = "<span style='font-size: 20px;'>Закладки</span>
-                          <hr>
-                          <span>
-                              {bookmarks_list}
-                          </span>";
+            $lists = $createButton;
+            $bookmarks = $bookmarksCollapse;//"<span style='font-size: 20px;'>Закладки</span><hr><span>{bookmarks_list}</span>";
             $button = $editButton;
         }
         $query = mysql_query("SELECT * FROM list_users WHERE name = '$user';");
