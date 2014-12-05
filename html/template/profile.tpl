@@ -8,51 +8,49 @@
 </head>   
     
 <body>
-    <div id="header">        
+    <div id="header">
         <a class="title link" href="/" title="The Lists">The Lists</a>
         <span class="search"><form action="search.php">
             <input class="inputtext" type="search" maxlength="15" name="find" placeholder="Поиск">
         </form></span>
         <ul id="profile_settings">
-            <li id="profile"><a href="/profile.php">
+            <li class="semi-header"><a href="/profile.php">
                 <img src="avatar/{profile_avatar}" width="24" height="24">
                 {profile_name}
             </a></li>                
-            <li id="settings"><a class="tools"href="/setting.php"></a></li>
+            <li id="settings"><a class="tools" href="/setting.php"></a></li>
             <li id="logout"><a class="power" href="/unlogin.php"></a></li>
         </ul>    
     </div>
-    <table style="height: 95%; width: 100%; border-spacing: 0; border-collapse: collapse">
-        <tr style="height: 100%; width: 100%;">
-            <td style="height: 100%; width: 25%; padding: 0">
-                <div style="height: 100%; padding: 5px 10px; background: #E5E5E5; border-right: solid 1px black; min-width: 300px;">
+    <table id="profile_table">
+        <tr>
+            <td id="td_list_of_lists">
+                <div class="list_of_lists">
                     <img src="avatar/{user_avatar}" width="24" height="24">
-                   
-                    <span style="font-size: 20px;">
-                        {user_name}
-                    </span>
+                    <span class="semi-header">{user_name}</span>
                     <hr>
                     <div>
-                    <a href="javascript:collapsElement('myLists')" rel="nofollow">Списки</a>
-                        <div id="myLists" style="display:none">
-                            <span>
+                        <dl class="left_menu">
+                            <a href="javascript:collapsElement('myLists')" rel="nofollow" class="link" style="font-size: 19px"><dt>Списки</dt></a>
+                            <div id="myLists" style="display: none;">
+                                <hr>
                                 {lists}
-                            </span>
-                        </div>
+                                <hr>
+                            </div>
+                        </dl>
                     </div>
-                    
                     <div>
                         {bookmarks}
                     </div>
                 </div>
             </td>
-            <td style="height: 100%; width: 70%;  min-height: 400px">
+            <td style="height: 100%; width: 100%;  min-height: 400px">
                 <div style="height: 100%; width: 100%; padding: 5% 0;">
-                    <div style="height: 100%; padding: 5px 10px; background: #E5E5E5; border: solid 1px black; min-width: 400px; min-height: 400px; margin: 0 20%">
+                    <div style="height: 100%; padding: 5px 10px; background: #9999E7; border: solid 1px black; min-width: 400px; min-height: 400px; margin: 0 20%; border-top-right-radius: 1.5em; box-shadow: 0px 0px 15px 5px #888888;">
                         <table style="width: 100%; border-spacing: 0; border-collapse: collapse;">
                             <tr style="width: 100%;">
-                                <td style="vertical-align: middle; padding: 0; width: 80%;">
-                                    <span style="font-size: 24px;">
+                                <td style="vertical-align: bottom; padding: 0; width: 80%;">
+                                    <span style="font-size: 21px;">
                                         {name_list}
                                     </span>
                                 </td>
@@ -61,7 +59,7 @@
                                 </td>
                             </tr>
                         </table>
-                        <hr>
+                        <hr style="border-top-radius: 1em;">
                         <span>
                             {text_list}
                         </span>
@@ -72,7 +70,6 @@
     </table>
     {message}
 </body>
-
 <script>
  function collapsElement(id){
      if (document.getElementById(id).style.display!="none"){
@@ -80,8 +77,6 @@
      } else {
       document.getElementById(id).style.display='';   
      }
- }
-    
+ } 
 </script>     
-    
 </html>

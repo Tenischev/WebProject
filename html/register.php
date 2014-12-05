@@ -9,7 +9,7 @@ if (!$is_logged){
                  <span class="editText">Почта: <input type="email" name="email" maxlength="30"></span>
                  <span class="editText">Пароль: <input type="password" name="pass" maxlength="15"></span>
                  <span class="editText">Подтверждение: <input type="password" name="pass_confirm" maxlength="15"></span>
-                 <span class="button"><input type="submit" value="Зарегистрироваться"></span>
+                 <span class="button"><input type="submit" value="Зарегистрироваться" class="super_button"></span>
                ';
     $message = "";
     if (isset($_POST['register'])){

@@ -7,22 +7,22 @@
     <title>Создание нового списка - The Lists</title>
 </head>
 <body>
-    <div id="header">        
+    <div id="header">
         <a class="title link" href="/" title="The Lists">The Lists</a>
         <span class="search"><form action="search.php">
             <input class="inputtext" type="search" maxlength="15" name="find" placeholder="Поиск">
         </form></span>
         <ul id="profile_settings">
-            <li id="profile"><a href="/profile.php">
+            <li class="semi-header"><a href="/profile.php">
                 <img src="avatar/{profile_avatar}" width="24" height="24">
                 {profile_name}
             </a></li>                
-            <li id="settings"><a class="tools"href="/setting.php"></a></li>
+            <li id="settings"><a class="tools" href="/setting.php"></a></li>
             <li id="logout"><a class="power" href="/unlogin.php"></a></li>
         </ul>    
     </div>
     <form method="post">
-        <div style="height: 80%;  width: 60%; margin: 2% 20%;  min-height: 400px; background: #E5E5E5; border: solid 1px black; padding: 10px">
+        <div style="height: 80%;  width: 60%; margin: 2% 20%;  min-height: 400px; background: #9999E7; border: solid 1px black; padding: 10px">
             <table style="width: 100%; border-spacing: 1;">
                 <tr style="width: 100%;">
                     <td style="width: 90%; padding: 0">
@@ -50,7 +50,7 @@
                         </label>
                     </td>
                     <td style="width: 50%; padding: 0" align="right">
-                        <input type="submit" name="create" tabindex="4" value="Создать" style="margin: 0">
+                        <input type="submit" name="create" tabindex="4" value="Создать" style="margin: 0" class="super_button">
                     </td>
                 </tr>
             </table>

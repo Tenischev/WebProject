@@ -7,8 +7,8 @@
     <title>Регистрация - The Lists</title>
 </head>
 <body>
-    <div id="header">        
-        <a class="title link" href="/" title="The Lists">The Lists</a>
+    <div id="header">
+        <a class="title link" href="/" title="The Lists">The Lists</a>   
     </div>
     <form class="box" method="post">
         <span class="text">{message}</span>

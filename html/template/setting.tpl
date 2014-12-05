@@ -3,40 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/images.css">
     <title>Настройки - The Lists</title>
 </head>
 <body>
     <div id="header">
         <a class="title link" href="/" title="The Lists">The Lists</a>
-        <span class="search">
-            <form action="search.php">
-                <input class="inputtext" type="search" maxlength="15" name="find" placeholder="Поиск">
-            </form>
-        </span>
+        <span class="search"><form action="search.php">
+            <input class="inputtext" type="search" maxlength="15" name="find" placeholder="Поиск">
+        </form></span>
         <ul id="profile_settings">
-            <li id="profile"><a href="/profile.php"><img src="avatar/{profile_avatar}" width="24" height="24">{profile_name}</a></li>
-            <li id="settings"><a class="tools"href="/setting.php"></a></li>
+            <li class="semi-header"><a href="/profile.php">
+                <img src="avatar/{profile_avatar}" width="24" height="24">
+                {profile_name}
+            </a></li>                
+            <li id="settings"><a class="tools" href="/setting.php"></a></li>
             <li id="logout"><a class="power" href="/unlogin.php"></a></li>
-        </ul>
+        </ul>    
     </div>
-    <div>
         <form class="rectangle" method="post">                    
                 <span class="text">Смена пароля</span>
             <table align="center">
                 <tr>
                     <td>
-                    <span class="editText">Старый пароль:</span>
-                    </td>
-                    <td>
-                    <span class="editText"><input type="password" maxlength="20" name="old_pass"></span>
+                    <span class="editText">Старый пароль: <input type="password" maxlength="20" name="old_pass"></span>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <span class="editText">Новый пароль:</span>
+                        <span class="editText">Новый пароль: <input type="password" maxlength="20" name="new_pass"></span>
                     </td>
-                    <td>
-                    <span class="editText"><input type="password" maxlength="20" name="new_pass"></span>
+                </tr>
+                <tr>
+                    <td align="center" style="width: 100%">
+                        <input type="submit" name="change_pass" value="Сменить" class="super_button">
                     </td>
                 </tr>
             </table>
@@ -44,9 +44,9 @@
         
         <form class="rectangle" method="post" enctype="multipart/form-data">
             <span class="text">Загрузить аватар(меньше 5КБ и 512*512)</span>
-            <span class="editText"><input type="hidden" name="MAX_FILE_SIZE" value="5120" ></span>
-            <span class="editText"><input type="file" maxlength="5" accept="image/jpeg,image/png" name="filename"></span>
-            <span class="button"><input type="submit" name="load_icon" value="Загрузить"></span>
+            <input type="hidden" name="MAX_FILE_SIZE" value="5120" >
+            <span class="button" style="padding: 0 0 5px 0"><input type="file" maxlength="5" accept="image/jpeg,image/png" name="filename">
+            <input type="submit" name="load_icon" value="Загрузить" class="super_button"></span>
         </form>
     {message}
     </div>

@@ -12,17 +12,19 @@ $bookmarkButton = '<form method="post" class="list_buttons">
                        <input type="submit" name="bookmark" value=" " class="bookmark">
                    </form>';
 $popMessage = '<div class="pop_message">
-                   <p style="margin: 0;">{message_text}</p>
+                   <center><p style="margin: 0;">{message_text}</p></center>
                </div>';
 $createButton = '<form action="create.php">
-                     <span class="button"><input type="submit" value="Добавить список"></span>
+                     <input type="submit" value="Добавить список" class="super_button">
                  </form>';
-$bookmarksCollapse = '<a href="javascript:collapsElement('."'".'bookMark'."'".')" rel="nofollow">Закладки</a>
-                     <div id="bookMark" style="display:none">
-                         <span>
+$bookmarksCollapse = '<dl class="left_menu">
+                        <a href="javascript:collapsElement('."'bookMark'".')" rel="nofollow" class="link" style="font-size: 19px"><dt>Закладки</dt></a>
+                        <div id="bookMark" style="display:none;">
+                             <hr>
                              {bookmarks_list}
-                         </span>
-                     </div>';
+                             <hr>
+                        </div>
+                      </dl>';
 
 if ($is_logged){
     if (isset($_POST['search'])){
@@ -129,7 +131,7 @@ if ($is_logged){
                                 $nameCurList = $row['name'];
                                 $teg = getTeg($row['type']);
                                 $i += 1;
-                                $lists = $lists.'<a href="?list='.$i.$link.'">'.$nameCurList.'</a><br>';
+                                $lists = $lists.'<a href="?list='.$i.$link.'"><dd>'.$nameCurList.'</dd></a>';
                                 if ($number == $i){
                                     $idLookList = $row['id'];
                                     $nameList = $nameCurList;
@@ -153,7 +155,7 @@ if ($is_logged){
                                         $nameCurList = $row2['name'];
                                         $teg = getTeg($row2['type']);
                                         $i += 1;
-                                        $bookmarksList = $bookmarksList.'<a href="?list='.$i.'">'.$nameCurList.'</a><br>';
+                                        $bookmarksList = $bookmarksList.'<a href="?list='.$i.'"><dd>'.$nameCurList.'</dd></a>';
                                         if ($number == $i){
                                             $button = $bookmarkButton;
                                             $idLookList = $row2['id'];
