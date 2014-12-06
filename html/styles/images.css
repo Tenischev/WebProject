@@ -20,6 +20,7 @@
 }
 
 .pencil{
+    cursor: pointer;
 	padding: inherit;
 	border: inherit;
 	background-color: inherit;
@@ -31,6 +32,7 @@
 }
 
 .del_button {
+    cursor: pointer;
 	padding: inherit;
 	border: inherit;
 	background-color: inherit;

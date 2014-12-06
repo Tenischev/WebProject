@@ -29,11 +29,11 @@
                     <td style="width: 90%; padding: 0">
                         <input type="text" autofocus required name="name" maxlength="15" placeholder="Название списка" value="{name_list}" tabindex="1" style="font-size: 22px; width: 95%">
                     </td>
-                    <td style="width: 5%; padding: 0; vertical-align: middle;" class="type_list" align="center">
+                    <td style="width: 5%; padding: 0; vertical-align: baseline;" class="type_list" align="center">
                         <input type="radio" id="fradio" name="type_list" value="mark" hidden {checked_mark}>
                         <label for="fradio" class="marked_list"></label>
                     </td>
-                    <td style="width: 5%; padding: 0; vertical-align: middle;" class="type_list" align="center">
+                    <td style="width: 5%; padding: 0; vertical-align: baseline;" class="type_list" align="center">
                         <input type="radio" id="sradio" name="type_list" value="number" hidden {checked_number}>
                         <label for="sradio" class="numbered_list"></label>
                     </td>

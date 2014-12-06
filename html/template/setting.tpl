@@ -45,7 +45,7 @@
         <form class="rectangle" method="post" enctype="multipart/form-data">
             <span class="text">Загрузить аватар(меньше 5КБ и 512*512)</span>
             <input type="hidden" name="MAX_FILE_SIZE" value="5120" >
-            <span class="button" style="padding: 0 0 5px 0"><input type="file" maxlength="5" accept="image/jpeg,image/png" name="filename">
+            <span class="button" style="padding: 0 0 5px 0"><input type="file" maxlength="5" accept="image/jpeg,image/png" name="filename" class="file_loader">
             <input type="submit" name="load_icon" value="Загрузить" class="super_button"></span>
         </form>
     {message}

@@ -31,22 +31,36 @@
                     <hr>
                     <div>
                         <dl class="left_menu">
-                            <a href="javascript:collapsElement('myLists')" rel="nofollow" class="link" style="font-size: 19px"><dt>Списки</dt></a>
-                            <div id="myLists" style="display: none;">
+                            <a {href_lists} class="link" style="font-size: 19px">
+                                <dt>
+                                    Списки
+                                </dt>
+                            </a>
+                            <div id="myLists" {trigger_lists}>
                                 <hr>
+                                <form action="create.php" {guest_access}>
+                                    <input type="submit" value="Добавить список" class="super_button">
+                                </form>
                                 {lists}
                                 <hr>
                             </div>
                         </dl>
                     </div>
                     <div>
-                        {bookmarks}
+                        <dl class="left_menu" {guest_access}>
+                            <a href="?change=bookmarks" class="link" style="font-size: 19px"><dt>Закладки</dt></a>
+                            <div id="bookMark" {trigger_bookmarks}>
+                                 <hr>
+                                 {bookmarks_list}
+                                 <hr>
+                            </div>
+                        </dl>
                     </div>
                 </div>
             </td>
             <td style="height: 100%; width: 100%;  min-height: 400px">
                 <div style="height: 100%; width: 100%; padding: 5% 0;">
-                    <div style="height: 100%; padding: 5px 10px; background: #9999E7; border: solid 1px black; min-width: 400px; min-height: 400px; margin: 0 20%; border-top-right-radius: 1.5em; box-shadow: 0px 0px 15px 5px #888888;">
+                    <div  id="list_view">
                         <table style="width: 100%; border-spacing: 0; border-collapse: collapse;">
                             <tr style="width: 100%;">
                                 <td style="vertical-align: bottom; padding: 0; width: 80%;">

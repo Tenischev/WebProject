@@ -14,36 +14,33 @@ $bookmarkButton = '<form method="post" class="list_buttons">
 $popMessage = '<div class="pop_message">
                    <center><p style="margin: 0;">{message_text}</p></center>
                </div>';
-$createButton = '<form action="create.php">
-                     <input type="submit" value="Добавить список" class="super_button">
-                 </form>';
-$bookmarksCollapse = '<dl class="left_menu">
-                        <a href="javascript:collapsElement('."'bookMark'".')" rel="nofollow" class="link" style="font-size: 19px"><dt>Закладки</dt></a>
-                        <div id="bookMark" style="display:none;">
-                             <hr>
-                             {bookmarks_list}
-                             <hr>
-                        </div>
-                      </dl>';
 
 if ($is_logged){
     if (isset($_POST['search'])){
         header('Location: search.php?find='.$_POST['search']);
     } else {
+        if (!isset($_SESSION['last_watch'])){
+            $_SESSION['last_watch'] = 1;
+        }
+        if (!isset($_SESSION['trigger_list'])){
+            $_SESSION['trigger_list'] = false;
+        }
+        if (!isset($_SESSION['trigger_bookmarks'])){
+            $_SESSION['trigger_bookmarks'] = false;
+        }
         $message = '';
         $messageText = '';
+        $lists = "";
         if (isset($_GET['user'])){ // for looks page another user
             $user = $_GET['user'];
             $link = "&user=".$user;
-            $lists = "";
             $button = $bookmarkButton;
-            $bookmarks = "";
+            $guest = true;
             if(preg_match( "/[\||\'|\<|\>|\[|\]|\"|\!|\?|\$|\@|\/|\\\|\&\~\*\{\+]/", $user ) ) $user = "";
         } else {
             $user = $user_name;
             $link = '';
-            $lists = $createButton;
-            $bookmarks = $bookmarksCollapse;//"<span style='font-size: 20px;'>Закладки</span><hr><span>{bookmarks_list}</span>";
+            $guest = false;
             $button = $editButton;
         }
         $query = mysql_query("SELECT * FROM list_users WHERE name = '$user';");
@@ -55,12 +52,13 @@ if ($is_logged){
             $userIcon = $row['icon'];
             mysql_free_result($query);
             $idLookList = -1;
-            $number = 1;
+            $number = $_SESSION['last_watch'];
             $nameList = "";
             $textList = "";
             if (isset($_GET['list'])){
                 if (is_numeric($_GET['list'])){
                     $number = $_GET['list'];
+                    $_SESSION['last_watch'] = $number;
                 }
             }
             if (isset($_GET['id'])){
@@ -126,6 +124,9 @@ if ($is_logged){
                 $query = mysql_query("SELECT * FROM lists WHERE user = '$user';");
                 if ($query){
                     if (mysql_num_rows($query) >= 1){
+                        if (($guest) and ($number > mysql_num_rows($query)) and ($idLookList == -1)){
+                            $number = 1;
+                        }
                         while ($row = mysql_fetch_array($query)){
                             if (($row['public'] == 1) or ($user == $user_name)){
                                 $nameCurList = $row['name'];
@@ -170,7 +171,24 @@ if ($is_logged){
                         mysql_free_result($query);
                     }
                 }
+                if ((isset($_GET['change'])) and (!($guest))){
+                    if ($_GET['change'] == 'lists'){
+                        $_SESSION['trigger_list'] = !($_SESSION['trigger_list']);
+                    }
+                    if ($_GET['change'] == 'bookmarks'){
+                        $_SESSION['trigger_bookmarks'] = !($_SESSION['trigger_bookmarks']);
+                    }
+                }
                 $tpl->load('profile.tpl');
+                $tpl->set('{guest_access}', getDisplay($guest));
+                if (!$guest){
+                    $tpl->set('{trigger_lists}', getDisplay($_SESSION['trigger_list']));
+                    $tpl->set('{href_lists}', 'href="?change=lists"');
+                } else {
+                    $tpl->set('{trigger_lists}', '');
+                    $tpl->set('{href_lists}', '');
+                }
+                $tpl->set('{trigger_bookmarks}', getDisplay($_SESSION['trigger_bookmarks']));
                 $tpl->set('{lists}', $lists);
                 $tpl->set('{name_list}', $nameList);
                 $tpl->set('{text_list}', $textList);
@@ -178,7 +196,6 @@ if ($is_logged){
                 $tpl->set('{user_name}', $user);
                 $tpl->set('{buttons}', $button);
                 $tpl->set('{id_list}', $idLookList);
-                $tpl->set('{bookmarks}', $bookmarks);
                 $tpl->set('{bookmarks_list}', $bookmarksList);
                 $tpl->set('{message}', $message);
                 $tpl->set('{message_text}', $messageText);
@@ -197,5 +214,12 @@ function getTeg($type){
         return "ol";
     }
     return "ul";
+}
+
+function getDisplay($flag){
+    if ($flag){
+        return "style='display: none;'";
+    }
+    return "";
 }
 ?>
