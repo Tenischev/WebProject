@@ -22,7 +22,7 @@
         </ul>    
     </div>
     <form method="post">
-        <div style="height: 80%;  width: 60%; margin: 2% 20%;  min-height: 400px; background: #9999E7; border: solid 1px black; padding: 10px">
+        <div class="edit_box">
             <input type="hidden" name="id" value="{id_list}">
             <table style="width: 100%; border-spacing: 1;">
                 <tr style="width: 100%;">
@@ -40,7 +40,7 @@
                 </tr>
             </table>
             <hr>
-            <textarea name="text" rows="25" cols="10" required placeholder="Поле для ввода списка" tabindex="2" style="height: 100%;  width: 100%; resize: vertical;">{text_list}</textarea>
+            <textarea name="text" rows="25" cols="10" required placeholder="Поле для ввода списка" tabindex="2">{text_list}</textarea>
             <hr>
             <table style="width: 100%; border-spacing: 0; border-collapse: collapse;">
                 <tr style="width: 100%;">

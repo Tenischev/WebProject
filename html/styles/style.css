@@ -136,7 +136,7 @@ body{
     background-repeat: no-repeat;
 }
 .type_list input[type="radio"]:checked + label{
-    box-shadow: 0px 0px 5px #6666E7;
+    box-shadow: 0px 0px 5px 2px #4444E7;
 }
 
 .pop_message{
@@ -268,4 +268,47 @@ body{
     margin: 0 20%;
     border-top-right-radius: 1.5em;
     box-shadow: 0px 0px 15px 5px #888888;
+    overflow: hidden;
+}
+
+.edit_box{
+    height: 80%;
+    width: 60%;
+    margin: 2% 20%;
+    min-height: 400px;
+    background: #7777E7;
+    border-radius: 20px;
+    border: solid 1px black;
+    padding: 10px;
+    box-shadow: 7px 7px 15px #888888;
+    border: 2px ridge #6666E7;
+}
+.edit_box label{
+    color: white;
+}
+.edit_box input[type="text"], .edit_box textarea{
+    background-color: inherit;
+    color: white;
+    border-color: #9999E7;
+}
+.edit_box input[type="text"]{
+    padding: 1px 0 1px 3px;
+}
+.edit_box textarea{
+    width: 99%;
+    height: 100%;
+    resize: vertical;
+    border: 2px inset #9999E7;
+}
+.edit_box input[type="text"]::-webkit-input-placeholder{
+    color: #CFCFCF;
+}
+.edit_box input[type="text"]::-moz-placeholder{
+    color: white;
+}
+.edit_box textarea::-webkit-input-placeholder{
+    color: #CFCFCF;
+}
+.edit_box textarea::-moz-placeholder{
+    color: white;
 }

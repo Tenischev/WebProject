@@ -253,6 +253,11 @@ body{
 }
 .left_menu dd:hover{
     background-color: #7777E7;
+    background: -moz-linear-gradient(right, #3333E7 0%, #7777E7 100%);
+    background: -webkit-linear-gradient(right, #3333E7 0%, #7777E7 100%);
+    background: -o-linear-gradient(right, #3333E7 0%, #7777E7 100%);
+    background: -ms-linear-gradient(right, #3333E7 0%, #7777E7 100%);
+    background: linear-gradient(right, #3333E7 0%, #7777E7 100%);
     margin: 0;
 }
 
