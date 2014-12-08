@@ -10,7 +10,7 @@
     <div id="header">
         <a class="title link" href="/" title="The Lists">The Lists</a>   
     </div>
-    <form class="box" method="post">
+    <form class="box login_form" method="post" style="min-width: 20%;">
         <span class="text">{message}</span>
         {form}
     </form>
