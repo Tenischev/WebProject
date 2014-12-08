@@ -75,6 +75,7 @@ body{
     min-width: 350px;
     box-shadow: 7px 7px 15px #888888;
     border: 2px ridge #6666E7;
+    padding: 5px 0;
 }
 
 .button{
@@ -100,7 +101,7 @@ body{
     text-align: center;
     #width: 100%;    
     color: white;
-    padding: 0px 25px 0px 10px;
+    padding: 0px 10px 0px 10px;
 }
 
 .link:hover{

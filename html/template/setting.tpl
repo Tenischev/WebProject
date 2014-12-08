@@ -21,17 +21,17 @@
             <li id="logout"><a class="power" href="/unlogin.php"></a></li>
         </ul>    
     </div>
-        <form class="rectangle" method="post">                    
+        <form class="rectangle login_form" method="post">
                 <span class="text">Смена пароля</span>
             <table align="center">
                 <tr>
                     <td>
-                    <span class="editText">Старый пароль: <input type="password" maxlength="20" name="old_pass"></span>
+                        <input placeholder="Старый пароль" type="password" maxlength="15" name="old_pass">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <span class="editText">Новый пароль: <input type="password" maxlength="20" name="new_pass"></span>
+                        <input placeholder="Новый пароль" type="password" maxlength="15" name="new_pass">
                     </td>
                 </tr>
                 <tr>
@@ -42,7 +42,7 @@
             </table>
         </form>
         
-        <form class="rectangle" method="post" enctype="multipart/form-data">
+        <form class="rectangle login_form" method="post" enctype="multipart/form-data">
             <span class="text">Загрузить аватар(меньше 5КБ и 512*512)</span>
             <input type="hidden" name="MAX_FILE_SIZE" value="5120" >
             <span class="button" style="padding: 0 0 5px 0"><input type="file" maxlength="5" accept="image/jpeg,image/png" name="filename" class="file_loader">
