@@ -7,9 +7,22 @@
     <title>Регистрация - The Lists</title>
 </head>
 <body>
-    <div id="header">
-        <a class="title link" href="/" title="The Lists">The Lists</a>   
-    </div>
+    <table style="height: 100%; border-spacing: 0; width: 100%; border-collapse: collapse;">
+        <tr style="width: 100%; height: 10%;">
+            <td style="padding: 0; width: 100%; vertical-align: top;">
+                <div id="header">
+                    <a class="title link" href="/" title="The Lists">The Lists</a>
+                </div>
+            </td>
+        </tr>
+        <tr style="width: 100%;">
+            <td style="padding: 0; vertical-align: bottom;">
+                <footer>
+                    <center>Все права наши</center>
+                </footer>
+            </td>
+        </tr>
+    </table>
     <form class="box login_form" method="post" style="min-width: 20%;">
         <span class="text">{message}</span>
         {form}
