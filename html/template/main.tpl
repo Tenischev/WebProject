@@ -18,7 +18,13 @@
         <tr style="width: 100%;">
             <td style="padding: 0; vertical-align: bottom;">
                 <footer>
-                    <center>Все права наши</center>
+                    <center>
+                        <ul>
+                            <li><a href="sitemap.xml">Карта сайта</a></li>
+                            <li><a href="about.html">О нас</a></li>
+                            <li>Все права наши © 2014</li>
+                        </ul>
+                    </center>
                 </footer>
             </td>
         </tr>
