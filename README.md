@@ -7,17 +7,12 @@ Real source code in folder 'html'. Folder 'html/styles' contain CSS style for si
 Folder 'testHTML' use for test page view.
 
 Project structure:
-/
 
-|-/html
-
-|-|-/styles
-
-|-|-/template
-
-|-|-*.php
-
-|-/testHTML
-
-|-*
+/<br>
+|-/html<br>
+|-|-/styles<br>
+|-|-/template<br>
+|-|-*.php<br>
+|-/testHTML<br>
+|-<br>
 
