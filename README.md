@@ -8,9 +8,16 @@ Folder 'testHTML' use for test page view.
 
 Project structure:
 /
+
 |-/html
+
 |-|-/styles
+
 |-|-/template
+
 |-|-*.php
+
 |-/testHTML
+
 |-*
+
