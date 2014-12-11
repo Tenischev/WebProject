@@ -42,9 +42,9 @@ if (!$is_logged){
                             $message = "На вашу почту отправлено письмо с кодом подтверждения";
                             $form = "";
                             $salt = rand(204214, 251352);
-                            $code = "192.168.1.37/register.php?name=$login&key=".base64_encode($login.$salt.time().$mail);
+                            $code = "http://thelists.megaseven.ru/register.php?name=$login&key=".base64_encode($login.$salt.time().$mail);
                             mysql_query("INSERT INTO list_users (id, name, password, mail, secret_key, premium, icon) VALUES (NULL, '$login', '$pass', '$mail', '$salt', '0', 'default.png');");
-                            mail($mail, "Подтверждение регистрации", "Вы получили это письмо, потому что данный почтовый адрес был указан при регистрации на сайте TheLists\n\nДля подтверждения регистрации перейдите по ссылке: $code");
+                            mail($mail, "Подтверждение регистрации", "Вы получили это письмо, потому что данный почтовый адрес был указан при регистрации на сайте TheLists\n\nДля подтверждения регистрации перейдите по ссылке: $code", "From: no-reply@thelists.megaseven.ru");
                         }
                         mysql_free_result($query);
                     }
@@ -77,7 +77,7 @@ if (!$is_logged){
                         $form = "";
                     } else {
                         mysql_query("UPDATE list_users SET secret_key = '' WHERE name = '$login' AND mail = '$mail';");
-                        $message = 'Регистрация успешно завершена <meta http-equiv="Refresh" content="5;url=http://192.168.1.37/">';
+                        $message = 'Регистрация успешно завершена <meta http-equiv="Refresh" content="5;url=http://thelists.megaseven.ru/">';
                         $form = "";
                         $_SESSION['logged'] = true;
                         $_SESSION['id_in_table'] = $row['id'];

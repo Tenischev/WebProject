@@ -1,21 +1,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>http://localhost/</loc>
+        <loc>http://thelists.megaseven.ru/</loc>
         <lastmod>2014-12-10</lastmod>
         <priority>0.1</priority>
     </url>
     <url>
-        <loc>http://localhost/about.html</loc>
+        <loc>http://thelists.megaseven.ru/about.html</loc>
         <lastmod>2014-12-10</lastmod>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>http://localhost/login.php</loc>
+        <loc>http://thelists.megaseven.ru/login.php</loc>
         <lastmod>2014-12-10</lastmod>
         <priority>0.1</priority>
     </url>
     <url>
-        <loc>http://localhost/register.php</loc>
+        <loc>http://thelists.megaseven.ru/register.php</loc>
         <lastmod>2014-12-10</lastmod>
         <priority>0.1</priority>
     </url>
