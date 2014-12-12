@@ -40,6 +40,12 @@ if (!$is_logged){
                             $salt = '$1$kris13ha$';
                             $pass = crypt($pass, $salt);
                             $message = "На вашу почту отправлено письмо с кодом подтверждения";
+                            $domain = strstr($mail, '@');
+                            $knowService = mysql_query("SELECT * FROM email_services WHERE service_prefix = '$domain';");
+                            if (mysql_num_rows($knowService) == 1){
+                                $knowService = mysql_fetch_array($knowService);
+                                $message .= "<br><a href='".$knowService['link']."'>".$knowService['people_name']."</a>";
+                            }
                             $form = "";
                             $salt = rand(204214, 251352);
                             $code = "http://thelists.megaseven.ru/register.php?name=$login&key=".base64_encode($login.$salt.time().$mail);
