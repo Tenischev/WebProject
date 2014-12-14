@@ -2,7 +2,8 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/style.css">    
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <title>The Lists</title>
 </head>
 <body>

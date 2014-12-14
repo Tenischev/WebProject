@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/images.css">    
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <title>{profile_name} - The Lists</title>
 </head>
 <body>
@@ -33,16 +34,12 @@
                                 <hr>
                                 <div>
                                     <dl class="left_menu">
-                                        <a {href_lists} class="link" style="font-size: 19px">
-                                            <dt>
-                                                Списки
-                                            </dt>
+                                        <a {href_lists} class="link" style="font-size: 19px; padding-right: 210px">Списки</a>
+                                        <a {guest_access} href="/create.php">
+                                            <div class="plus" style="position: relative; top: 2px;" title="Создать новый список"></div>
                                         </a>
                                         <div id="myLists" {trigger_lists}>
                                             <hr>
-                                            <form action="create.php" {guest_access}>
-                                                <input type="submit" value="Добавить список" class="super_button">
-                                            </form>
                                             {lists}
                                             <hr>
                                         </div>
