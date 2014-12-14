@@ -34,6 +34,7 @@ footer li {
     padding: 10px 0;
     #border-bottom: solid 0.1em black;
     box-shadow: 7px 7px 15px #888888;
+    min-width: 800px;
 }
 
 .title {
@@ -239,17 +240,17 @@ body{
     height: 100%; 
     padding: 5px 10px; 
     background: #5555E7;
-    #background: -moz-linear-gradient(left, #6666E7 0%, #3333E7 98%, #000099 100%);
-    #background: -webkit-linear-gradient(left, #6666E7 0%, #3333E7 98%, #000099 100%);
-    #background: -o-linear-gradient(left, #6666E7 0%, #3333E7 98%, #000099 100%);
-    #background: -ms-linear-gradient(left, #6666E7 0%, #3333E7 98%, #000099 100%);
-    #background: linear-gradient(left, #6666E7 0%, #3333E7 98%, #000099 100%);
+    background: -moz-linear-gradient(left, #7777E7 0%, #5555E7 99%, #3333E7 100%);
+    background: -webkit-linear-gradient(left, #7777E7 0%, #5555E7 99%, #3333E7 100%);
+    background: -o-linear-gradient(left, #7777E7 0%, #5555E7 99%, #3333E7 100%);
+    background: -ms-linear-gradient(left, #7777E7 0%, #5555E7 99%, #3333E7 100%);
+    background: linear-gradient(left, #7777E7 0%, #5555E7 99%, #3333E7 100%);
     
-    background: -moz-linear-gradient(bottom, #7777E7 0%, #6666E7 50%, #5555E7 100%);
-    background: -webkit-linear-gradient(bottom, #7777E7 0%, #6666E7 50%, #5555E7 100%);
-    background: -o-linear-gradient(bottom, #7777E7 0%, #6666E7 50%, #5555E7 100%);
-    background: -ms-linear-gradient(bottom, #7777E7 0%, #6666E7 50%, #5555E7 100%);
-    background: linear-gradient(bottom, #7777E7 0%, #6666E7 50%, #5555E7 100%);
+    #background: -moz-linear-gradient(bottom, #7777E7 0%, #6666E7 50%, #5555E7 100%);
+    #background: -webkit-linear-gradient(bottom, #7777E7 0%, #6666E7 50%, #5555E7 100%);
+    #background: -o-linear-gradient(bottom, #7777E7 0%, #6666E7 50%, #5555E7 100%);
+    #background: -ms-linear-gradient(bottom, #7777E7 0%, #6666E7 50%, #5555E7 100%);
+    #background: linear-gradient(bottom, #7777E7 0%, #6666E7 50%, #5555E7 100%);
     
     #border-bottom: solid 0.1em black;
     min-width: 300px; 
@@ -287,16 +288,16 @@ body{
     height: 100%;
     padding: 5px 10px;
     background: #9999E7;
-    background: -moz-linear-gradient(top, #7777E7 0%, #6666E7 5%, #5555E7 100%);
-    background: -webkit-linear-gradient(top, #7777E7 0%, #6666E7 5%, #5555E7 100%);
-    background: -o-linear-gradient(top, #7777E7 0%, #6666E7 5%, #5555E7 100%);
-    background: -ms-linear-gradient(top, #7777E7 0%, #6666E7 5%, #5555E7 100%);
-    background: linear-gradient(top, #7777E7 0%, #6666E7 5%, #5555E7 100%);
-    #background: -moz-linear-gradient(top, #3333E7 0%, #4444E7 45px, #4949E7 50px, #4949E7 95%, #1D1DE7 99%, #000099 100%);
-    #background: -webkit-linear-gradient(top, #3333E7 0%, #4444E7 45px, #4949E7 50px, #4949E7 95%, #1D1DE7 99%, #000099 100%);
-    #background: -o-linear-gradient(top, #3333E7 0%, #4444E7 45px, #4949E7 50px, #4949E7 95%, #1D1DE7 99%, #000099 100%);
-    #background: -ms-linear-gradient(top, #3333E7 0%, #4444E7 45px, #4949E7 50px, #4949E7 95%, #1D1DE7 99%, #000099 100%);
-    #background: linear-gradient(top, #3333E7 0%, #4444E7 45px, #4949E7 50px, #4949E7 95%, #1D1DE7 99%, #000099 100%);
+    #background: -moz-linear-gradient(top, #7777E7 0%, #6666E7 5%, #5555E7 100%);
+    #background: -webkit-linear-gradient(top, #7777E7 0%, #6666E7 5%, #5555E7 100%);
+    #background: -o-linear-gradient(top, #7777E7 0%, #6666E7 5%, #5555E7 100%);
+    #background: -ms-linear-gradient(top, #7777E7 0%, #6666E7 5%, #5555E7 100%);
+    #background: linear-gradient(top, #7777E7 0%, #6666E7 5%, #5555E7 100%);
+    background: -moz-linear-gradient(top, #3030E7 0%, #6161E7 50px, #6666E7 55px, #6666E7 97%, #1D1DE7 99%, #000099 100%);
+    background: -webkit-linear-gradient(top, #3030E7 0%, #6161E7 50px, #6666E7 55px, #6666E7 97%, #1D1DE7 99%, #000099 100%);
+    background: -o-linear-gradient(top, #3030E7 0%, #6161E7 50px, #6666E7 55px, #6666E7 95%, #1D1DE7 99%, #000099 100%);
+    background: -ms-linear-gradient(top, #3030E7 0%, #6161E7 50px, #6666E7 55px, #6666E7 95%, #1D1DE7 99%, #000099 100%);
+    background: linear-gradient(top, #3030E7 0%, #6161E7 50px, #6666E7 55px, #6666E7 95%, #1D1DE7 99%, #000099 100%);
     #border: solid 1px black;
     min-width: 400px;
     min-height: 400px;
@@ -359,4 +360,15 @@ body{
     border: 2px solid #6666E6;
     outline: 0;
     margin: 1px 0;
+}
+
+.local_search {
+    width: 90%;
+    border: 0;
+    border-radius: 0.2em;
+    outline: 0;
+    padding: 1px 0 1px 2px;
+}
+.local_search:focus {
+    box-shadow: 0px 0px 10px #FFF;
 }

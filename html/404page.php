@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="robots" content="noindex">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <style type="text/css">
         .notFound {
         min-width:            512px;

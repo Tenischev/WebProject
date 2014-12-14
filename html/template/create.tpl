@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/images.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <title>Создание нового списка - The Lists</title>
 </head>
 <body>

@@ -4,6 +4,7 @@ include 'settings.php';
 
 $editButton = '<form method="post" class="list_buttons">
                    <input type="hidden" name="id_list" value="{id_list}">
+                   <input type="submit" name="favorite" value=" " class="heart">
                    <input type="submit" name="edit" value=" " class="pencil">
                    <input type="submit" name="delete" value=" " class="del_button">
                </form>';
@@ -78,6 +79,21 @@ if ($is_logged){
                     }
                 }
             }
+            if ((isset($_POST['favorite'])) and ($user == $user_name) and (is_numeric($_POST['id_list'])) and ($_POST['id_list'] > 0)){
+                $favorite = mysql_query("SELECT * FROM lists WHERE id = '".$_POST['id_list']."' AND user = '$user_name';");
+                if (mysql_num_rows($favorite) == 1){
+                    $favorite = mysql_fetch_array($favorite);
+                    if ($favorite['favorite'] == 0){
+                        mysql_query("UPDATE lists SET favorite = 1 WHERE id = '".$_POST['id_list']."';");
+                        $message = $popMessage;
+                        $messageText = 'Добавлен в любимые!';
+                    } else {
+                        mysql_query("UPDATE lists SET favorite = 0 WHERE id = '".$_POST['id_list']."';");
+                        $message = $popMessage;
+                        $messageText = 'Удален из любимых!';
+                    }
+                }
+            }
             if ((isset($_POST['delete'])) and ($user == $user_name) and (is_numeric($_POST['id_list'])) and ($_POST['id_list'] > 0)){
                 mysql_query("DELETE FROM lists WHERE id = '".$_POST['id_list']."' AND user = '$user_name';");
                 mysql_query("DELETE FROM bookmarks WHERE id_list = '".$_POST['id_list']."';");
@@ -121,7 +137,29 @@ if ($is_logged){
             }
             if (!$flagEdit){
                 $i = 0;
-                $query = mysql_query("SELECT * FROM lists WHERE user = '$user';");
+                $query = mysql_query("SELECT * FROM lists WHERE user = '$user' AND favorite = '1';");
+                if ($query){
+                    if (mysql_num_rows($query) >= 1){
+                        if (($guest) and ($number > mysql_num_rows($query)) and ($idLookList == -1)){
+                            $number = 1;
+                        }
+                        while ($row = mysql_fetch_array($query)){
+                            if (($row['public'] == 1) or ($user == $user_name)){
+                                $nameCurList = $row['name'];
+                                $teg = getTeg($row['type']);
+                                $i += 1;
+                                $lists = $lists.'<a href="?list='.$i.$link.'"><dd>'.$nameCurList.'<div {guest_access} class="heart_small" style="position: relative; top: 2px; float: right"></div></dd></a>';
+                                if ($number == $i){
+                                    $idLookList = $row['id'];
+                                    $nameList = $nameCurList;
+                                    $textList = "<".$teg."><li>".str_replace("\n", "</li><li>", str_replace("\r\n", "</li><li>", nl2br(htmlspecialchars($row['text']))))."</li></".$teg.">";
+                                }
+                            }
+                        }
+                    }
+                    mysql_free_result($query);
+                }
+                $query = mysql_query("SELECT * FROM lists WHERE user = '$user' AND favorite = '0';");
                 if ($query){
                     if (mysql_num_rows($query) >= 1){
                         if (($guest) and ($number > mysql_num_rows($query)) and ($idLookList == -1)){
@@ -180,15 +218,6 @@ if ($is_logged){
                     }
                 }
                 $tpl->load('profile.tpl');
-                $tpl->set('{guest_access}', getDisplay($guest));
-                if (!$guest){
-                    $tpl->set('{trigger_lists}', getDisplay($_SESSION['trigger_list']));
-                    $tpl->set('{href_lists}', 'href="?change=lists"');
-                } else {
-                    $tpl->set('{trigger_lists}', '');
-                    $tpl->set('{href_lists}', '');
-                }
-                $tpl->set('{trigger_bookmarks}', getDisplay($_SESSION['trigger_bookmarks']));
                 $tpl->set('{lists}', $lists);
                 $tpl->set('{name_list}', $nameList);
                 $tpl->set('{text_list}', $textList);
@@ -201,6 +230,15 @@ if ($is_logged){
                 $tpl->set('{message_text}', $messageText);
                 $tpl->set('{profile_avatar}', $user_icon);
                 $tpl->set('{user_avatar}', $userIcon);
+                $tpl->set('{guest_access}', getDisplay($guest));
+                if (!$guest){
+                    $tpl->set('{trigger_lists}', getDisplay($_SESSION['trigger_list']));
+                    $tpl->set('{href_lists}', 'href="?change=lists"');
+                } else {
+                    $tpl->set('{trigger_lists}', '');
+                    $tpl->set('{href_lists}', '');
+                }
+                $tpl->set('{trigger_bookmarks}', getDisplay($_SESSION['trigger_bookmarks']));
                 $tpl->compile();
             }
         }
