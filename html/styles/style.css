@@ -361,3 +361,14 @@ body{
     outline: 0;
     margin: 1px 0;
 }
+
+.local_search {
+    width: 90%;
+    border: 0;
+    border-radius: 0.2em;
+    outline: 0;
+    padding: 1px 0 1px 2px;
+}
+.local_search:focus {
+    box-shadow: 0px 0px 10px #FFF;
+}

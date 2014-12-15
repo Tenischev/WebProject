@@ -4,9 +4,25 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/images.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <title>{profile_name} - The Lists</title>
+    <script>
+        function find(id){
+            var s_el = document.getElementById(id);
+            var search = s_el.value;
+            var next_el = s_el.nextSibling.nextSibling;
+            while (next_el.tagName != "hr"){
+                var dd = next_el.firstChild.firstChild;
+                if (false === dd.value.indexOf(search)){
+                    next_el.style.display="none";
+                } else {
+                    next_el.style.display="";
+                }
+                next_el = next_el.nextSibling;
+            }
+        }
+    </script>
 </head>
-
 <body>
 <div id="header">
     <a class="title link" href="/" title="The Lists">The Lists</a>
@@ -34,8 +50,12 @@
                             <hr>
                             <div>
                                 <dl class="left_menu">
-                                    <a href="javascript:collapsElement('myLists')" rel="nofollow" class="link" style="font-size: 19px"><dt>Списки</dt></a>
-                                    <div id="myLists" style="display: none;">
+                                    <a {href_lists} class="link" style="font-size: 19px; padding-right: 210px">Списки</a>
+                                    <a {guest_access} href="/create.php">
+                                        <div class="plus" style="position: relative; top: 2px;" title="Создать новый список"></div>
+                                    </a>
+                                    <div id="myLists" {trigger_lists}>
+                                        <input type="search" id="search_in_lists" maxlength="15" onkeypress="find('search_in_lists')">
                                         <hr>
                                         {lists}
                                         <hr>
@@ -43,17 +63,24 @@
                                 </dl>
                             </div>
                             <div>
-                                {bookmarks}
+                                <dl class="left_menu" {guest_access}>
+                                    <a href="?change=bookmarks" class="link" style="font-size: 19px"><dt>Закладки</dt></a>
+                                    <div id="bookMark" {trigger_bookmarks}>
+                                        <hr>
+                                        {bookmarks_list}
+                                        <hr>
+                                    </div>
+                                </dl>
                             </div>
                         </div>
                     </td>
                     <td style="height: 100%; width: 100%;  min-height: 400px">
                         <div style="height: 100%; width: 100%; padding: 5% 0;">
-                            <div id="list_view">
+                            <div  id="list_view">
                                 <table style="width: 100%; border-spacing: 0; border-collapse: collapse;">
                                     <tr style="width: 100%;">
                                         <td style="vertical-align: bottom; padding: 0; width: 80%;">
-                                                <span style="font-size: 21px;">
+                                                <span style="font-size: 21px; color: white;">
                                                     {name_list}
                                                 </span>
                                         </td>
@@ -63,7 +90,7 @@
                                     </tr>
                                 </table>
                                 <hr style="border-top-radius: 1em;">
-                                    <span>
+                                    <span style="color: white;">
                                         {text_list}
                                     </span>
                             </div>
@@ -76,20 +103,17 @@
     <tr>
         <td style="padding: 0;">
             <footer>
-                <center>Все права наши</center>
+                <center>
+                    <ul>
+                        <li><a href="sitemap.xml">Карта сайта</a></li>
+                        <li><a href="about.html">О нас</a></li>
+                        <li>Все права наши © 2014</li>
+                    </ul>
+                </center>
             </footer>
         </td>
     </tr>
 </table>
 {message}
 </body>
-<script>
- function collapsElement(id){
-     if (document.getElementById(id).style.display!="none"){
-       document.getElementById(id).style.display='none';  
-     } else {
-      document.getElementById(id).style.display='';   
-     }
- } 
-</script>
 </html>
