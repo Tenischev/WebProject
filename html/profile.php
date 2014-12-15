@@ -130,6 +130,9 @@ if ($is_logged){
                                 }
                                 mysql_free_result($query2);
                             }
+                        } else {
+                            $message = $popMessage;
+                            $messageText = 'Это ваш список';
                         }
                     }
                     mysql_free_result($query);
@@ -137,14 +140,14 @@ if ($is_logged){
             }
             if (!$flagEdit){
                 $i = 0;
-                $query = mysql_query("SELECT * FROM lists WHERE user = '$user' AND favorite = '1';");
-                if ($query){
-                    if (mysql_num_rows($query) >= 1){
-                        if (($guest) and ($number > mysql_num_rows($query)) and ($idLookList == -1)){
-                            $number = 1;
-                        }
-                        while ($row = mysql_fetch_array($query)){
-                            if (($row['public'] == 1) or ($user == $user_name)){
+                if ($guest) {
+                    $query = mysql_query("SELECT * FROM lists WHERE user = '$user' AND public = '1';");
+                    if ($query){
+                        if (mysql_num_rows($query) >= 1){
+                            if ((($number > mysql_num_rows($query)) or ($number < 1)) and ($idLookList == -1)){
+                                $number = 1;
+                            }
+                            while ($row = mysql_fetch_array($query)){
                                 $nameCurList = $row['name'];
                                 $teg = getTeg($row['type']);
                                 $i += 1;
@@ -156,17 +159,39 @@ if ($is_logged){
                                 }
                             }
                         }
+                        mysql_free_result($query);
                     }
-                    mysql_free_result($query);
-                }
-                $query = mysql_query("SELECT * FROM lists WHERE user = '$user' AND favorite = '0';");
-                if ($query){
-                    if (mysql_num_rows($query) >= 1){
-                        if (($guest) and ($number > mysql_num_rows($query)) and ($idLookList == -1)){
+                } else {
+                    $amount = mysql_query("SELECT COUNT(*) FROM lists WHERE user = '$user';");
+                    if ($amount){
+                        $totalLists = mysql_fetch_row($amount);
+                        $totalLists = $totalLists[0];
+                        if ((($number > $totalLists) or ($number < 1)) and ($idLookList == -1)){
                             $number = 1;
                         }
-                        while ($row = mysql_fetch_array($query)){
-                            if (($row['public'] == 1) or ($user == $user_name)){
+                        mysql_free_result($amount);
+                    }
+                    $query = mysql_query("SELECT * FROM lists WHERE user = '$user' AND favorite = '1';");
+                    if ($query){
+                        if (mysql_num_rows($query) >= 1){
+                            while ($row = mysql_fetch_array($query)){
+                                $nameCurList = $row['name'];
+                                $teg = getTeg($row['type']);
+                                $i += 1;
+                                $lists = $lists.'<a href="?list='.$i.$link.'"><dd>'.$nameCurList.'<div {guest_access} class="heart_small" style="position: relative; top: 2px; float: right"></div></dd></a>';
+                                if ($number == $i){
+                                    $idLookList = $row['id'];
+                                    $nameList = $nameCurList;
+                                    $textList = "<".$teg."><li>".str_replace("\n", "</li><li>", str_replace("\r\n", "</li><li>", nl2br(htmlspecialchars($row['text']))))."</li></".$teg.">";
+                                }
+                            }
+                        }
+                        mysql_free_result($query);
+                    }
+                    $query = mysql_query("SELECT * FROM lists WHERE user = '$user' AND favorite = '0';");
+                    if ($query){
+                        if (mysql_num_rows($query) >= 1){
+                            while ($row = mysql_fetch_array($query)){
                                 $nameCurList = $row['name'];
                                 $teg = getTeg($row['type']);
                                 $i += 1;
@@ -178,8 +203,8 @@ if ($is_logged){
                                 }
                             }
                         }
+                        mysql_free_result($query);
                     }
-                    mysql_free_result($query);
                 }
                 $bookmarksList = "";
                 if ($user == $user_name){
