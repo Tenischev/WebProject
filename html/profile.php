@@ -140,6 +140,7 @@ if ($is_logged){
             }
             if (!$flagEdit){
                 $i = 0;
+                $bookmarksList = "";
                 if ($guest) {
                     $query = mysql_query("SELECT * FROM lists WHERE user = '$user' AND public = '1';");
                     if ($query){
@@ -162,14 +163,17 @@ if ($is_logged){
                         mysql_free_result($query);
                     }
                 } else {
-                    $amount = mysql_query("SELECT COUNT(*) FROM lists WHERE user = '$user';");
-                    if ($amount){
-                        $totalLists = mysql_fetch_row($amount);
-                        $totalLists = $totalLists[0];
+                    $amount1 = mysql_query("SELECT COUNT(*) FROM lists WHERE user = '$user';");
+                    $amount2 = mysql_query("SELECT COUNT(*) FROM bookmarks WHERE user = '$user';");
+                    if ($amount1 && $amount2) {
+                        $totalLists1 = mysql_fetch_row($amount1);
+                        $totalLists2 = mysql_fetch_row($amount2);
+                        $totalLists = $totalLists1[0] + $totalLists2[0];
                         if ((($number > $totalLists) or ($number < 1)) and ($idLookList == -1)){
                             $number = 1;
                         }
-                        mysql_free_result($amount);
+                        mysql_free_result($amount1);
+                        mysql_free_result($amount2);
                     }
                     $query = mysql_query("SELECT * FROM lists WHERE user = '$user' AND favorite = '1';");
                     if ($query){
@@ -205,9 +209,6 @@ if ($is_logged){
                         }
                         mysql_free_result($query);
                     }
-                }
-                $bookmarksList = "";
-                if ($user == $user_name){
                     $query = mysql_query("SELECT * FROM bookmarks WHERE user = '$user';");
                     if ($query){
                         if (mysql_num_rows($query) >= 1){
