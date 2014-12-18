@@ -26,6 +26,7 @@
                     </ul>
                 </div>
                 <form method="post">
+                    <input type="hidden" name="csrf_token" value="{csrf}">
                     <div class="edit_box">
                         <table style="width: 100%; border-spacing: 1;">
                             <tr style="width: 100%;">

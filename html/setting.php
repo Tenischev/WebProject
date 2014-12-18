@@ -9,7 +9,7 @@ $popMessage = '<div class="pop_message">
 if ($is_logged){
     $message = '';
     $messageText = '';
-    if (isset($_POST['change_pass'])){
+    if ((isset($_POST['change_pass'])) and ($_POST['csrf_token'] == $_SESSION['csrf_token'])){
         $passwordOld = $_POST['old_pass'];
         $passwordNew = $_POST['new_pass'];
         if(preg_match( "/[\||\'|\<|\>|\[|\]|\"|\!|\?|\$|\@|\/|\\\|\&\~\*\{\+]/", $passwordNew ) ) $passwordNew = "";
@@ -34,7 +34,7 @@ if ($is_logged){
                 mysql_free_result($query);
             }
         }
-    } else if (isset($_POST['load_icon'])){
+    } else if ((isset($_POST['load_icon'])) and ($_POST['csrf_token'] == $_SESSION['csrf_token'])){
         $max_file_size = 5*1024;
         if ($_FILES['filename']['size'] <= $max_file_size){
             if (($_FILES['filename']['type'] = "image/png") or ($_FILES['filename']['type'] = "image/jpeg")){
@@ -62,6 +62,7 @@ if ($is_logged){
     $tpl->set('{profile_name}', $user_name);
     $tpl->set('{message}', $message);
     $tpl->set('{message_text}', $messageText);
+    $tpl->set('{csrf}', $_SESSION['csrf_token']);
     $tpl->compile();
 } else {
     header('Location: index.php');
