@@ -34,6 +34,7 @@
         <tr style="width: 100%; height: 90%;">
             <td style="padding: 0; width: 100%; vertical-align: top;">
                 <form class="rectangle login_form" method="post">
+                    <input type="hidden" name="csrf_token" value="{csrf}">
                     <span class="text">Смена пароля</span>
                     <table align="center">
                         <tr>
@@ -55,6 +56,7 @@
                 </form>
 
                 <form class="rectangle login_form" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="csrf_token" value="{csrf}">
                     <span class="text">Загрузить аватар(меньше 5КБ и 512*512)</span>
                     <input type="hidden" name="MAX_FILE_SIZE" value="5120" >
                     <span class="button" style="padding: 0 0 5px 0"><input type="file" maxlength="5" accept="image/jpeg,image/png" name="filename" class="file_loader">
