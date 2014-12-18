@@ -3,12 +3,14 @@ define('TheListsProject', true);
 include 'settings.php';
 
 $editButton = '<form method="post" class="list_buttons">
+                   <input type="hidden" name="csrf_token" value="{csrf}">
                    <input type="hidden" name="id_list" value="{id_list}">
                    <input type="submit" name="favorite" value=" " class="heart">
                    <input type="submit" name="edit" value=" " class="pencil">
                    <input type="submit" name="delete" value=" " class="del_button">
                </form>';
 $bookmarkButton = '<form method="post" class="list_buttons">
+                       <input type="hidden" name="csrf_token" value="{csrf}">
                        <input type="hidden" name="id_list" value="{id_list}">
                        <input type="submit" name="bookmark" value=" " class="bookmark">
                    </form>';
@@ -79,7 +81,7 @@ if ($is_logged){
                     }
                 }
             }
-            if ((isset($_POST['favorite'])) and ($user == $user_name) and (is_numeric($_POST['id_list'])) and ($_POST['id_list'] > 0)){
+            if ((isset($_POST['favorite'])) and ($_POST['csrf_token'] == $_SESSION['csrf_token']) and ($user == $user_name) and (is_numeric($_POST['id_list'])) and ($_POST['id_list'] > 0)){
                 $favorite = mysql_query("SELECT * FROM lists WHERE id = '".$_POST['id_list']."' AND user = '$user_name';");
                 if (mysql_num_rows($favorite) == 1){
                     $favorite = mysql_fetch_array($favorite);
@@ -94,14 +96,14 @@ if ($is_logged){
                     }
                 }
             }
-            if ((isset($_POST['delete'])) and ($user == $user_name) and (is_numeric($_POST['id_list'])) and ($_POST['id_list'] > 0)){
+            if ((isset($_POST['delete'])) and ($_POST['csrf_token'] == $_SESSION['csrf_token']) and ($user == $user_name) and (is_numeric($_POST['id_list'])) and ($_POST['id_list'] > 0)){
                 mysql_query("DELETE FROM lists WHERE id = '".$_POST['id_list']."' AND user = '$user_name';");
                 mysql_query("DELETE FROM bookmarks WHERE id_list = '".$_POST['id_list']."';");
                 $message = $popMessage;
                 $messageText = 'Список удален!';
             }
             $flagEdit = false;
-            if ((isset($_POST['edit'])) and ($user == $user_name) and (is_numeric($_POST['id_list'])) and ($_POST['id_list'] > 0)){
+            if ((isset($_POST['edit'])) and ($_POST['csrf_token'] == $_SESSION['csrf_token']) and ($user == $user_name) and (is_numeric($_POST['id_list'])) and ($_POST['id_list'] > 0)){
                 $query = mysql_query("SELECT * FROM lists WHERE id = '".$_POST['id_list']."' AND user = '$user_name';");
                 if ($query){
                     if (mysql_num_rows($query) == 1){
@@ -111,7 +113,7 @@ if ($is_logged){
                     mysql_free_result($query);
                 }
             }
-            if (isset($_POST['bookmark']) and (is_numeric($_POST['id_list'])) and ($_POST['id_list'] > 0)){
+            if (isset($_POST['bookmark']) and ($_POST['csrf_token'] == $_SESSION['csrf_token']) and (is_numeric($_POST['id_list'])) and ($_POST['id_list'] > 0)){
                 $query = mysql_query("SELECT * FROM lists WHERE id = '".$_POST['id_list']."';");
                 if ($query){
                     if (mysql_num_rows($query) == 1){
@@ -265,6 +267,7 @@ if ($is_logged){
                     $tpl->set('{href_lists}', '');
                 }
                 $tpl->set('{trigger_bookmarks}', getDisplay($_SESSION['trigger_bookmarks']));
+                $tpl->set('{csrf}', $_SESSION['csrf_token']);
                 $tpl->compile();
             }
         }

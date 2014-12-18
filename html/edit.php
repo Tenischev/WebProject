@@ -4,7 +4,7 @@ include 'settings.php';
 
 if ($is_logged){
     if (isset($_POST['edit'])){
-        if (is_numeric($_POST['id'])){
+        if ((is_numeric($_POST['id'])) and ($_POST['csrf_token'] == $_SESSION['csrf_token'])){
             $idList = $_POST['id'];
             $nameList = htmlspecialchars($_POST['name']);
             $textList = mysql_real_escape_string(htmlspecialchars($_POST['text']));
@@ -51,6 +51,7 @@ if ($is_logged){
                 $tpl->set('{checked_mark}', $check_m);
                 $tpl->set('{checked_number}', $check_n);
                 $tpl->set('{profile_avatar}', $user_icon);
+                $tpl->set('{csrf}', $_SESSION['csrf_token']);
                 $tpl->compile();
             } else {
                 header('Location: index.php');

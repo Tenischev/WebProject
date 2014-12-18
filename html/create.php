@@ -3,7 +3,7 @@ define('TheListsProject', true);
 include 'settings.php';
 
 if ($is_logged){
-    if (isset($_POST['create'])){
+    if ((isset($_POST['create'])) and ($_POST['csrf_token'] == $_SESSION['csrf_token'])){
         $nameList = htmlspecialchars($_POST['name']);
         $textList = mysql_real_escape_string(htmlspecialchars($_POST['text']));
         if ($_POST['type_list'] == "mark"){
@@ -21,6 +21,7 @@ if ($is_logged){
         $tpl->load('create.tpl');
         $tpl->set('{profile_name}', $user_name);
         $tpl->set('{profile_avatar}', $user_icon);
+        $tpl->set('{csrf}', $_SESSION['csrf_token']);
         $tpl->compile();
     }
 } else {

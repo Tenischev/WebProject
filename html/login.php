@@ -15,6 +15,7 @@ if (!$is_logged){
 			$user_row = mysql_fetch_array($query);
 			$_SESSION['logged'] = true;
 			$_SESSION['id_in_table'] = $user_row['id'];
+			$_SESSION['csrf_token'] = md5(rand(100000,999999));
 			mysql_free_result($query);
 			header('Location: profile.php');
 		} else {
