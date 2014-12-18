@@ -81,6 +81,7 @@ if ($is_logged){
                     }
                 }
             }
+            // Maybe I must set 'die(404)' if token not set?
             if ((isset($_POST['favorite'])) and ($_POST['csrf_token'] == $_SESSION['csrf_token']) and ($user == $user_name) and (is_numeric($_POST['id_list'])) and ($_POST['id_list'] > 0)){
                 $favorite = mysql_query("SELECT * FROM lists WHERE id = '".$_POST['id_list']."' AND user = '$user_name';");
                 if (mysql_num_rows($favorite) == 1){
